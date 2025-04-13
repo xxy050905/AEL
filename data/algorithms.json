@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "description": "随机最近邻算法（90%概率选择最近节点，10%随机探索）",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import random\n    if random.random() < 0.1 and len(unvisited_nodes) > 1:\n        return random.choice(unvisited_nodes)\n    min_dist = float('inf')\n    nearest = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        if distance_matrix[current_node][node] < min_dist:\n            min_dist = distance_matrix[current_node][node]\n            nearest = node\n    return nearest"
+  },
+  {
+    "id": 2,
+    "description": "最大最小距离平衡算法（平衡当前距离与后续最小距离）",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    best_score = -float('inf')\n    best_node = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        current_dist = distance_matrix[current_node][node]\n        min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])\n        score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)\n        if score > best_score:\n            best_score = score\n            best_node = node\n    return best_node"
+  },
+  {
+    "id": 3,
+    "description": "节点密度优先算法（优先访问高密度区域）",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    density_scores = []\n    for node in unvisited_nodes:\n        distances = distance_matrix[node]\n        radius = np.percentile(distances, 25)\n        density = sum(1 for d in distances if d <= radius)\n        density_scores.append(density)\n    max_density = max(density_scores)\n    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]\n    return min(candidates, key=lambda x: distance_matrix[current_node][x])"
+  },
+  {
+    "id": 4,
+    "description": "动态阶段选择算法（前期探索后期收敛）",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    total_nodes = len(distance_matrix)\n    visited_ratio = 1 - len(unvisited_nodes)/total_nodes\n    if visited_ratio < 0.7:\n        return max(unvisited_nodes,key=lambda x:len([n for n in unvisited_nodes if distance_matrix[x][n]<distance_matrix[current_node][x]))\n    else:\n        return min(unvisited_nodes, key=lambda x: distance_matrix[current_node][x])"
+  },
+  {
+    "id": 5,
+    "description": "反向路径感知算法（考虑前进和返回路径影响）",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    if len(unvisited_nodes) == 1:\n        return unvisited_nodes[0]\n    min_cost = float('inf')\n    best_node = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        forward_cost = distance_matrix[current_node][node]\n        return_cost = distance_matrix[node][destination_node]\n        remaining_cost = min(distance_matrix[node][n] for n in unvisited_nodes if n != node)\n        total = forward_cost + 0.4*return_cost + 0.6*remaining_cost\n        if total < min_cost:\n            min_cost = total\n            best_node = node\n    return best_node"
+  }
+]

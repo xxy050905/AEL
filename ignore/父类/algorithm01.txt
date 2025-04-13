@@ -1,0 +1,94 @@
+import heapq
+import math
+import copy
+#分支界定法
+class Node:
+    def __init__(self, path, cost, bound, reduced_matrix):
+        self.path = path       # 访问路径（存储城市索引）
+        self.cost = cost       # 实际路径成本（基于原始矩阵）
+        self.bound = bound     # 当前节点的下界
+        self.reduced_matrix = reduced_matrix  # 归约后的矩阵（用于计算后续下界）
+    
+    def __lt__(self, other):
+        return self.bound < other.bound
+
+def reduce_matrix(matrix):
+    """ 归约矩阵并返回归约值 """
+    n = len(matrix)
+    reduction = 0
+    # 行归约
+    for i in range(n):
+        min_val = min(matrix[i])
+        if min_val != math.inf:
+            reduction += min_val
+            matrix[i] = [x - min_val for x in matrix[i]]
+    # 列归约
+    for j in range(n):
+        min_val = min(matrix[i][j] for i in range(n))
+        if min_val != math.inf:
+            reduction += min_val
+            for i in range(n):
+                matrix[i][j] -= min_val
+    return matrix, reduction
+
+def tsp_branch_and_bound(original_matrix):
+    n = len(original_matrix)
+    if n == 0:
+        return 0, []
+    
+    heap = []
+    min_cost = math.inf
+    best_path = []
+    
+    # 初始化：计算根节点的归约矩阵和下界
+    initial_matrix = [row.copy() for row in original_matrix]
+    reduced_matrix, reduction = reduce_matrix(initial_matrix)
+    root_bound = reduction
+    
+    heapq.heappush(heap, Node(path=[0], cost=0, bound=root_bound, reduced_matrix=reduced_matrix))
+    
+    while heap:
+        current = heapq.heappop(heap)
+        
+        if current.bound >= min_cost:
+            continue  # 剪枝
+        
+        # 完整路径：返回起点
+        if len(current.path) == n:
+            final_cost = current.cost + original_matrix[current.path[-1]][0]
+            if final_cost < min_cost:
+                min_cost = final_cost
+                best_path = current.path + [0]
+            continue
+        
+        # 扩展子节点
+        from_city = current.path[-1]
+        for to_city in range(n):
+            if to_city not in current.path:
+                # 从原始矩阵获取实际距离
+                step_cost = original_matrix[from_city][to_city]
+                
+                # 复制并修改归约矩阵以禁止重复访问
+                new_matrix = copy.deepcopy(current.reduced_matrix)
+                # 禁止从from_city出发和到达to_city
+                for i in range(n):
+                    new_matrix[from_city][i] = math.inf
+                    new_matrix[i][to_city] = math.inf
+                # 允许最后一步返回起点（仅在未完成时禁止）
+                if len(current.path) + 1 != n:
+                    new_matrix[to_city][0] = math.inf
+                
+                # 计算新下界
+                new_reduced, new_reduction = reduce_matrix(new_matrix)
+                new_bound = current.cost + step_cost + new_reduction
+                
+                if new_bound < min_cost:
+                    new_node = Node(
+                        path=current.path + [to_city],
+                        cost=current.cost + step_cost,
+                        bound=new_bound,
+                        reduced_matrix=new_reduced
+                    )
+                    heapq.heappush(heap, new_node)
+    
+    return min_cost, best_path

@@ -1,0 +1,907 @@
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+We propose the Random-Weighted Nearest Neighbor Algorithm (RwNN). This algorithm combines elements of the Random Nearest Neighbor (RANN) and Weighted Nearest Neighbor (WNN) approaches. At each step, it selects the next node based on a weighted combination of the nearest and farthest nodes, aiming to balance exploration and exploitation.
+</end>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    # Random Nearest Neighbor component
+    if random.random() < 0.1:
+        # 10% chance to explore further
+        next_node = random.choice(unvisited_nodes)
+        # Add a small weight to encourage exploration
+        next_node = random.choice(unvisited_nodes)
+    else:
+        # Weighted Nearest Neighbor component
+        best_node = unvisited_nodes[0]
+        best_score = -float('inf')
+        for node in unvisited_nodes:
+            current_dist = distance_matrix[current_node][node]
+            min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+            score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+            if score > best_score:
+                best_score = score
+                best_node = node
+        next_node = best_node
+    return next_node
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+```
+<start>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Algorithm description: This algorithm combines elements of the random nearest neighbor and dynamic phase selection approaches.
+    # It first selects a random node from the unvisited nodes with a 10% probability, then iteratively selects the next node based on either
+    # the nearest neighbor heuristic or the dynamic phase selection approach, depending on the iteration number.
+    # The algorithm aims to balance exploration and exploitation to find an efficient path for the traveling salesman problem.
+    # It starts by randomly selecting a node from the unvisited nodes with a 10% probability, then iteratively selects the next node based on
+    # either the nearest neighbor heuristic or the dynamic phase selection approach, depending on the iteration number.
+    # The algorithm returns the next node to visit based on the current node, destination node, unvisited nodes, and distance matrix.
+    # The code function must be called 'select_next_node' that takes inputs 'current_node', 'destination_node', 'unvisited_nodes', and 'distance_matrix',
+    # and outputs the 'next_node', where 'current_node', 'destination_node', 'next_node', and 'unvisited_nodes' are node IDs.
+    # Implementation steps:
+    # 1. With 10% probability, select a random node from the unvisited nodes.
+    # 2. With 90% probability, determine the next node based on either the nearest neighbor heuristic or the dynamic phase selection approach.
+    # 3. Return the next node to visit.
+    # End
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+We propose a new algorithm called <strong>Dynamic-Adaptive Route Optimization (DARO)</strong> that combines the strengths of the dynamic phase exploration algorithm (Algorithm 1) and the maximum-minimum distance balance algorithm (Algorithm 2). DARO dynamically adjusts its search strategy based on the current state of the route, balancing exploration and exploitation to efficiently find the shortest route that visits each node once and returns to the starting node. The algorithm maintains a balance between exploring unvisited nodes and exploiting the current route, ensuring a robust and efficient search process.
+</end>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Initialize best score and best node
+    best_score = -float('inf')
+    best_node = unvisited_nodes[0]
+    
+    # Iterate through each unvisited node
+    for node in unvisited_nodes:
+        # Calculate current distance
+        current_dist = distance_matrix[current_node][node]
+        
+        # Calculate minimum future distance
+        min_future_dist = min(
+            distance_matrix[node][n] 
+            for n in unvisited_nodes 
+            if n != node
+        )
+        
+        # Calculate score
+        score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+        
+        # Update best node if score is higher
+        if score > best_score:
+            best_score = score
+            best_node = node
+            
+    # Return the best node found
+    return best_node
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</start>
+</think>
+
+```
+<start>
+We propose a novel algorithm called <span class="font-semibold">Density-Adaptive Dynamic Exploration</span> (DADE). This algorithm combines the strengths of the density-based exploration from Algorithm 1 with the dynamic decision-making from Algorithm 2 to efficiently balance exploration and exploitation in node selection.
+
+The algorithm works as follows:
+1. **Initialization**: Start with the current node and define the destination node.
+2. **Density Calculation**: For each unvisited node, calculate its density score based on the distance matrix. The density score is determined by the number of nodes within a certain radius, which is derived from the 25th percentile of distances from the current node.
+3. **Candidate Selection**: Identify the nodes with the highest density score.
+4. **Dynamic Decision Making**: If the visited ratio is below 70%, prioritize nodes with fewer connections to the current node. Otherwise, prioritize nodes with the shortest distance from the current node.
+5. **Next Node Selection**: Choose the next node based on the dynamic decision-making criteria.
+6. **Update and Repeat**: Update the current node to the selected next node and repeat the process until all nodes are visited and return to the starting node.
+</start>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+
+    # Calculate density scores for each unvisited node
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+
+    # Determine the maximum density score
+    max_density = max(density_scores)
+
+    # Collect all candidates with the maximum density
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+
+    # Return the minimum candidate based on distance from current node
+    if len(candidates) > 0:
+        return min(candidates, key=lambda x: distance_matrix[current_node][x])
+    else:
+        return unvisited_nodes[0]
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</start>
+</think>
+
+``<start>  
+We propose the Density-Weighted and Minimax-Weighted Balance Algorithm (DWMBA). This algorithm combines the strengths of the density-based prioritization and the minimax-based balance. It assigns weights to nodes based on their density and minimizes the maximum distance to ensure balanced traversal.  
+
+</start>  
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Calculate density scores for unvisited nodes
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    
+    # Find the maximum density
+    max_density = max(density_scores)
+    
+    # Collect candidates with maximum density
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    
+    # Return the best candidate based on distance from current node
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+We propose a new algorithm called <strong>AdaptiveNearestNeighbor</strong> that combines the strengths of the density-based approach and the random nearest neighbor method. The algorithm dynamically adjusts the selection of the next node based on the current state of the visited nodes and the density of the unvisited regions. It first calculates the density scores for the unvisited nodes using a percentile-based approach, similar to the density-based algorithm. Then, it identifies the nodes with the highest density and selects the next node from these candidates. If there are multiple nodes with the same highest density, the algorithm randomly selects one of them. This approach ensures that the algorithm efficiently explores the unvisited regions while maintaining a balance between local and global search.
+</end>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    import random
+
+    # Calculate density scores for unvisited nodes
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+
+    # Find the maximum density
+    max_density = max(density_scores)
+
+    # Collect candidates with maximum density
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+
+    # Select the best candidate
+    if len(candidates) > 1:
+        # Randomly choose one from the candidates
+        return random.choice(candidates)
+
+    # If only one candidate, return it
+    return candidates[0]
+
+# Example usage:
+# unvisited_nodes = [1, 2, 3]
+# density_scores = [3, 4, 2]
+# max_density = 4
+# candidates = [2]
+# next_node = 2
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+We propose a new algorithm called <strong>AdaptiveNearestNeighbor</strong> that combines the strengths of the <strong>Maximum-Minimum Distance Balance Algorithm</strong> and the <strong>Random Nearest Neighbor Algorithm</strong>. This algorithm dynamically adjusts the selection of the next node based on the current state and minimizes the overall travel distance while considering both local and global optimization strategies.
+<end>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    import math
+    
+    # Balance current distance with future minimum distance
+    best_score = -float('inf')
+    best_node = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        current_dist = distance_matrix[current_node][node]
+        future_dist = [distance_matrix[node][n] for n in unvisited_nodes if n != node]
+        min_future_dist = min(future_dist) if future_dist else float('inf')
+        score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+        
+        # Random exploration with 10% chance
+        if random.random() < 0.1 and len(unvisited_nodes) > 1:
+            next_node = random.choice(unvisited_nodes)
+        else:
+            if current_dist < min_dist:
+                next_node = node
+                min_dist = current_dist
+    return next_node
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+We propose a new algorithm called <strong>AdaptiveNearestNeighbor</strong> that combines the strengths of the density-based approach and the random nearest neighbor method. This algorithm dynamically adjusts the selection of the next node based on the current state of the visited nodes and the density of the unvisited regions.
+
+The algorithm works as follows:
+1. It first calculates the density scores for all unvisited nodes based on the distance matrix.
+2. It identifies the node with the maximum density score, which represents the most densely populated area.
+3. It then selects a node from this area with the smallest distance to the current node.
+4. If the number of unvisited nodes is less than 2, it randomly selects a node from the remaining unvisited nodes.
+5. Finally, it returns the selected node as the next node in the route.
+</start>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    import random
+
+    # Calculate density scores for all unvisited nodes
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+
+    # Find the maximum density score
+    max_density = max(density_scores)
+
+    # Collect all nodes with the maximum density score
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+
+    # Select the node with the smallest distance to the current node
+    if len(candidates) > 1:
+        min_dist = float('inf')
+        nearest = unvisited_nodes[0]
+        for node in candidates:
+            if distance_matrix[current_node][node] < min_dist:
+                min_dist = distance_matrix[current_node][node]
+                nearest = node
+        return nearest
+    else:
+        # If only one node is unvisited, select it randomly
+        if len(unvisited_nodes) == 1:
+            return random.choice(unvisited_nodes)
+        else:
+            return random.choice(unvisited_nodes)
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Initialize variables to track the best candidate
+    best_node = None
+    best_score = -1
+    best_distance = float('inf')
+    
+    # Iterate through each unvisited node to find the best candidate
+    for node in unvisited_nodes:
+        # Calculate the distance from the current node to the destination node
+        distance = distance_matrix[current_node][destination_node]
+        
+        # Calculate the distance from the current node to the candidate node
+        distance_to_node = distance_matrix[current_node][node]
+        
+        # Calculate the distance from the candidate node to the destination node
+        distance_to_destination = distance_matrix[node][destination_node]
+        
+        # Calculate the total distance for the route
+        total_distance = distance_to_node + distance_to_destination
+        
+        # Update the best candidate if this route is shorter
+        if total_distance < best_distance:
+            best_node = node
+            best_score = total_distance
+            best_distance = total_distance
+            
+    # Return the best candidate as the next node
+    return best_node
+</end>
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Calculate the score for each unvisited node
+    scores = []
+    for node in unvisited_nodes:
+        current_dist = distance_matrix[current_node][node]
+        min_future_dist = min(distance_matrix[node][n] for n in unvisited_nodes if n != node)
+        score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+        scores.append(score)
+    
+    # Select the node with the best score
+    best_node = unvisited_nodes[0]
+    best_score = scores[0]
+    for i in range(1, len(unvisited_nodes)):
+        if scores[i] > best_score:
+            best_score = scores[i]
+            best_node = unvisited_nodes[i]
+    
+    # Optionally, apply a heuristic if needed
+    return best_node
+</end>
+==================================================
+crossover failed
+ <start>
+        <end>
+</start>
+</think>
+
+```
+<start>
+We propose a novel algorithm called <span class="font-semibold">DynamicExplore</span> that combines the strengths of the Random Nearest Neighbor Algorithm and the Dynamic Stage Selection Algorithm. This approach dynamically adjusts the selection process based on the exploration ratio, balancing between thorough exploration and efficient convergence. The algorithm maintains a record of visited nodes and dynamically selects the next node based on the exploration ratio and the proximity to the destination node.
+</start>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Calculate the exploration ratio
+    visited_ratio = 1 - len(unvisited_nodes) / len(distance_matrix)
+    
+    # Determine the selection criteria based on the exploration ratio
+    if visited_ratio < 0.7:
+        # Select the node with the most unvisited neighbors
+        nearest_neighbors = [n for n in unvisited_nodes if distance_matrix[current_node][n] < distance_matrix[destination_node][n]]
+        return max(nearest_neighbors, key=lambda x: len([m for m in unvisited_nodes if distance_matrix[x][m] < distance_matrix[current_node][m]])
+    else:
+        # Converge to the nearest unvisited node
+        return min(unvisited_nodes, key=lambda x: distance_matrix[current_node][x])
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+```
+<start>
+I propose a new algorithm called <strong>RandomDensityBasedNearestNeighbor</strong> that combines elements of the Random Nearest Neighbor algorithm and the Node Density Based Nearest Neighbor algorithm. This algorithm aims to efficiently find the shortest route that visits each node once and returns to the starting node by balancing exploration and exploitation.
+</start>
+
+<end>
+
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    import numpy as np
+    
+    # First, explore the most densely populated areas
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    
+    # Find the maximum density
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    
+    # If the maximum density is unique, choose the nearest node
+    if len(candidates) == 1:
+        return candidates[0]
+    
+    # Otherwise, use a random selection from the candidates
+    random_node = random.choice(candidates)
+    return random_node
+</end>
+==================================================
+crossover failed
+ <start>
+        <end>
+</start>
+</think>
+
+<start>
+We propose a new algorithm called the "Hybrid Greedy-Local Search" algorithm. This algorithm combines the strengths of the "Maximum-Minimum Distance Balance Algorithm" and the "Random Nearest Neighbor Algorithm" to efficiently find the shortest route that visits each node once and returns to the starting node. The algorithm works by first selecting the next node based on a balance between the current distance and the future minimum distance, and then using a randomized approach to explore nearby nodes for further optimization.
+
+</end>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    best_score = -float('inf')
+    best_node = unvisited_nodes[0]
+    
+    # First, balance the current distance with future minimum distance
+    for node in unvisited_nodes:
+        current_dist = distance_matrix[current_node][node]
+        min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+        score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+        if score > best_score:
+            best_score = score
+            best_node = node
+    
+    # Then, perform a local search with randomized exploration
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < distance_matrix[current_node][nearest]:
+            nearest = node
+    return nearest
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+We propose a new algorithm called <strong>Dynamic-Adaptive Route Optimization (DARO)</strong> that combines the strengths of the dynamic phase exploration algorithm (Algorithm 1) and the maximum-minimum distance balance algorithm (Algorithm 2). DARO dynamically adjusts its search strategy based on the current state of the route, balancing exploration and exploitation to efficiently find the shortest route that visits each node once and returns to the starting node. The algorithm maintains a balance between exploring unvisited nodes and exploiting the current route, ensuring a robust and efficient search process.
+</end>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Initialize best score and best node
+    best_score = -float('inf')
+    best_node = unvisited_nodes[0]
+    
+    # Iterate through each unvisited node
+    for node in unvisited_nodes:
+        # Calculate current distance
+        current_dist = distance_matrix[current_node][node]
+        
+        # Calculate minimum future distance
+        min_future_dist = min(
+            distance_matrix[node][n] 
+            for n in unvisited_nodes 
+            if n != node
+        )
+        
+        # Calculate score
+        score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+        
+        # Update best node if score is higher
+        if score > best_score:
+            best_score = score
+            best_node = node
+            
+    # Return the best node found
+    return best_node
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+We propose a new algorithm called <strong>AdaptiveNearestNeighbor</strong> that combines the strengths of the density-based approach and the random nearest neighbor method. The algorithm dynamically adjusts the selection of the next node based on the current state of the visited nodes and the density of the unvisited regions. It first computes the density scores for the unvisited nodes and identifies the most densely populated area. Then, it selects the nearest node within that area with a probability that is influenced by the density and the proximity to the destination node. This approach balances the exploration of the unvisited regions with the exploitation of the most promising areas, leading to efficient and effective routing.
+</end>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    import random
+
+    # Compute density scores for unvisited nodes
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+
+    # Find the maximum density
+    max_density = max(density_scores)
+
+    # Collect candidates with maximum density
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+
+    # Select the best candidate based on proximity to destination
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        dist = distance_matrix[current_node][node]
+        if dist < min_dist:
+            min_dist = dist
+            nearest = node
+
+    # Combine density and proximity considerations
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice([n for n, s in zip(unvisited_nodes, density_scores) if s == max_density])
+    else:
+        return nearest
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+```
+<start>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Algorithm description: This algorithm combines elements of the random nearest neighbor and dynamic phase selection approaches.
+    # It first selects a random node from the unvisited nodes with a 10% probability, then iteratively selects the next node based on either
+    # the nearest neighbor heuristic or the dynamic phase selection approach, depending on the iteration number.
+    # The algorithm aims to balance exploration and exploitation to find an efficient path for the traveling salesman problem.
+    # It starts by randomly selecting a node from the unvisited nodes with a 10% probability, then iteratively selects the next node based on
+    # either the nearest neighbor heuristic or the dynamic phase selection approach, depending on the iteration number.
+    # The algorithm returns the next node to visit based on the current node, destination node, unvisited nodes, and distance matrix.
+    # The code function must be called 'select_next_node' that takes inputs 'current_node', 'destination_node', 'unvisited_nodes', and 'distance_matrix',
+    # and outputs the 'next_node', where 'current_node', 'destination_node', 'next_node', and 'unvisited_nodes' are node IDs.
+    # Implementation steps:
+    # 1. With 10% probability, select a random node from the unvisited nodes.
+    # 2. With 90% probability, determine the next node based on either the nearest neighbor heuristic or the dynamic phase selection approach.
+    # 3. Return the next node to visit.
+    # End
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+We propose a new algorithm called <strong>Hybrid Randomized Algorithm (HRA)</strong> that combines the strengths of the <strong>Maximum-Minimum Distance Balanced Algorithm</strong> and the <strong>Random Nearest Neighbor Algorithm</strong>. The HRA dynamically balances exploration and exploitation by first randomly selecting a node with a 10% probability and then using the <strong>Maximum-Minimum Distance Balanced Algorithm</strong> to guide the search towards promising regions. This approach ensures efficient exploration of the search space while maintaining a balance between local and global search strategies.
+</end>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    import numpy as np
+
+    # 10% chance to explore randomly
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        # Randomly choose from unvisited nodes
+        return random.choice(unvisited_nodes)
+
+    # 90% chance to follow the Maximum-Minimum Distance Balanced Algorithm
+    min_dist = float('inf')
+    nearest_node = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest_node = node
+
+    return nearest_node
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</start>
+</think>
+
+```
+<start>
+We propose a novel algorithm called <span class="font-semibold">DynamicExplore</span> that combines the strengths of the Random Nearest Neighbor Algorithm and the Dynamic Stage Selection Algorithm. This approach dynamically balances exploration and exploitation to efficiently find the shortest route that visits each node once and returns to the starting node. The algorithm dynamically adjusts its exploration strategy based on the current state of the search, ensuring a balance between exploring unvisited nodes and exploiting the most promising paths.
+</span>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Calculate the exploration ratio
+    visited_ratio = 1 - len(unvisited_nodes) / len(distance_matrix)
+    
+    # Determine the exploration strategy based on the ratio
+    if visited_ratio < 0.7:
+        # Prioritize nodes with fewer connections to encourage exploration
+        nearest = max(unvisited_nodes, key=lambda x: sum(distance_matrix[x][n] for n in unvisited_nodes))
+    else:
+        # Converge towards the most promising path
+        nearest = min(unvisited_nodes, key=lambda x: sum(distance_matrix[x][n] for n in unvisited_nodes))
+    
+    # Select the next node based on the determined strategy
+    return nearest
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+We propose a new algorithm called <strong>AdaptiveNearestNeighbor</strong> that combines the strengths of the density-based approach and the random nearest neighbor method. The algorithm dynamically adjusts the selection of the next node based on the current state of the visited nodes and the density of the unvisited regions. It first computes the density scores for the unvisited nodes and identifies the most densely populated area. Then, it selects the nearest node within that area with a probability that is influenced by the density and the proximity to the destination node. This approach balances the exploration of the unvisited regions with the exploitation of the most promising areas, leading to efficient and effective routing.
+</end>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    import random
+
+    # Compute density scores for unvisited nodes
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+
+    # Find the maximum density
+    max_density = max(density_scores)
+
+    # Collect candidates with maximum density
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+
+    # Select the best candidate based on proximity to destination
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        dist = distance_matrix[current_node][node]
+        if dist < min_dist:
+            min_dist = dist
+            nearest = node
+
+    # Combine density and proximity considerations
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice([n for n, s in zip(unvisited_nodes, density_scores) if s == max_density])
+    else:
+        return nearest
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</start>
+</think>
+
+``<start>
+I'll create a new algorithm called the "Dynamic-Adaptive Route Optimization Algorithm" (DARO-Algorithm). This algorithm combines elements from both the dynamic phase exploration algorithm (Algorithm 1) and the maximum-minimum distance balance algorithm (Algorithm 2) to create a more robust and efficient route optimization solution.
+
+The DARO-Algorithm works by first performing a dynamic exploration phase where it selects the next node based on a combination of unvisited nodes and their distances from the current node. Once a certain percentage of nodes have been visited (determined by the unvisited_nodes ratio), it transitions to a balance phase where it selects the next node based on a weighted combination of the current distance and the minimum future distance to unvisited nodes.
+
+This approach allows the algorithm to first explore the most promising paths while also ensuring that it converges towards an optimal route by balancing current and future distances.
+</start>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Dynamic phase exploration: prioritize nodes with fewer connections
+    visited_ratio = 1 - len(unvisited_nodes) / len(distance_matrix)
+    if visited_ratio < 0.7:
+        # Select the node with the fewest connections
+        next_node = max(unvisited_nodes, key=lambda x: len([n for n in unvisited_nodes if distance_matrix[x][n] < distance_matrix[current_node][n]])
+    else:
+        # Balance phase: prioritize nodes with the smallest future distance
+        best_score = -float('inf')
+        best_node = unvisited_nodes[0]
+        for node in unvisited_nodes:
+            current_dist = distance_matrix[current_node][node]
+            min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+            score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+            if score > best_score:
+                best_score = score
+                best_node = node
+        next_node = best_node
+    return next_node
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+``<start>
+We propose a new algorithm called <strong>AdaptiveNearestNeighbor</strong> that combines the strengths of the density-based approach and the random nearest neighbor method. The algorithm dynamically adjusts the selection of the next node based on the current state of the visited nodes and the density of the unvisited regions. It first computes the density scores for the unvisited nodes and identifies the most dense region. Then, it selects the nearest node within that region with a probability based on the density score and the random nearest neighbor method. This approach balances the exploration of the unvisited regions with the exploitation of the most densely populated areas, leading to efficient and effective route optimization.
+</end>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    import random
+
+    # Compute density scores for unvisited nodes
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+
+    # Find the maximum density
+    max_density = max(density_scores)
+
+    # Collect candidates with maximum density
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+
+    # Select the best candidate based on distance from current node
+    best_node = min(candidates, key=lambda x: distance_matrix[current_node][x])
+
+    # With probability 0.1, choose a random node from unvisited nodes
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+
+    # Find the nearest node to current node
+    nearest = unvisited_nodes[0]
+    min_dist = float('inf')
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+
+    return nearest
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</start>
+</think>
+
+``<start>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Initialize variables to track the best next node
+    best_node = None
+    best_distance = float('inf')
+    
+    # Iterate through each unvisited node to find the next best candidate
+    for node in unvisited_nodes:
+        # Calculate the distance from the current node to the destination
+        current_distance = distance_matrix[current_node][destination_node]
+        
+        # Calculate the distance from the current node to the unvisited node
+        node_distance = distance_matrix[current_node][node]
+        
+        # Calculate the total distance for the round trip
+        total_distance = current_distance + distance_matrix[node][destination_node] + node_distance
+        
+        # Update the best candidate if this one is better
+        if total_distance < best_distance:
+            best_node = node
+            best_distance = total_distance
+            
+    # If no unvisited nodes are left, return the destination node
+    if len(unvisited_nodes) == 0:
+        return destination_node
+    
+    # If there are multiple unvisited nodes with the same distance, return the one with the smallest ID
+    if best_node is not None and len(unvisited_nodes) > 1:
+        return min(unvisited_nodes, key=lambda x: distance_matrix[current_node][x])
+    
+    # If all nodes are visited, return the destination node
+    return destination_node
+</end>
+==================================================
+crossover failed
+ <start>
+        <end>
+</start>
+</end>
+</think>
+
+``<start>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Calculate the score for each unvisited node
+    scores = []
+    for node in unvisited_nodes:
+        current_dist = distance_matrix[current_node][node]
+        min_future_dist = min(distance_matrix[node][n] for n in unvisited_nodes if n != node)
+        score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+        scores.append(score)
+    
+    # Determine the best node based on the scores
+    best_score = max(scores)
+    best_node = unvisited_nodes[unvisited_nodes.index(node) == unvisited_nodes.index(best_node)]
+    
+    # Return the best node
+    return best_node
+</end>
+==================================================
+crossover failed
+ <start>
+        <end>
+</start>
+</end>
+</think>
+
+```
+<start>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Algorithm description: This algorithm combines the strengths of the two provided algorithms.
+    # It first performs a density-based exploration to identify high-density regions, then uses a dynamic
+    # exploration strategy that prioritizes nodes with fewer connections in the early stages and
+    # higher connections in the latter stages.
+    # Implementation steps:
+    # 1. Calculate the density scores for all unvisited nodes based on the distance matrix.
+    # 2. Identify the nodes with the highest density scores.
+    # 3. Perform a breadth-first search (BFS) to explore these high-density regions.
+    # 4. In the early stages, prioritize nodes with fewer connections to explore less dense areas.
+    # 5. In the latter stages, prioritize nodes with more connections to converge on the optimal path.
+    # Return the next node based on the dynamic exploration strategy.
+    pass
+</start>
+
+<end>
+```
+==================================================
+crossover failed
+ <start>
+        <end>
+</think>
+
+```
+:start>
+<end>
+
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Step 1: Calculate density scores for all unvisited nodes
+    density_scores = {}
+    for node in unvisited_nodes:
+        density = 0
+        for neighbor in distance_matrix[node]:
+            if neighbor != current_node:
+                density += distance_matrix[node][neighbor]
+        density_scores[node] = density
+
+    # Step 2: Identify high-density nodes
+    high_density_nodes = [node for node, score in density_scores.items() if score > 0.5 * max(density_scores.values())]
+
+    # Step 3: Perform BFS to explore high-density regions
+    queue = deque([high_density_nodes[0]])
+    visited = {high_density_nodes[0]}
+    while queue:
+        node = queue.popleft()
+        for neighbor in distance_matrix[node]:
+            if neighbor not in visited and neighbor != current_node:
+                visited.add(neighbor)
+                queue.append(neighbor)
+
+    # Step 4: Dynamic exploration strategy
+    if len(visited) < len(unvisited_nodes):
+        # Explore less dense areas first
+        for node in unvisited_nodes:
+            if node not in visited:
+                if len([distance_matrix[node][n] for n in unvisited_nodes if n != node]) < len([distance_matrix[high_density_nodes[0]][n] for n in unvisited_nodes if n != high_density_nodes[0]]):
+                    queue.append(node)
+                else:
+                    break
+        else:
+            # If no less dense areas found, prioritize high-density nodes
+            for node in high_density_nodes:
+                if node not in visited:
+                    queue.append(node)
+                else:
+                    break
+
+    # Step 5: Converge on optimal path
+    while queue:
+        current_node = queue.popleft()
+        for neighbor in distance_matrix[current_node]:
+            if neighbor != destination_node and neighbor not in visited:
+                visited.add(neighbor)
+                break
+        else:
+            break
+
+    return next_node
+</start>
+</end>
+==================================================

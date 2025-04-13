@@ -1,0 +1,114 @@
+解析失败: 代码语法错误: expected an indented block after function definition on line 1 (<unknown>, line 15)
+完整响应内容:
+ <start>
+        <end>
+</think>
+
+```
+<start>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Algorithm description: This algorithm combines elements of the random nearest neighbor and dynamic phase selection approaches.
+    # It first selects a random node from the unvisited nodes with a 10% probability, then iteratively selects the next node based on either
+    # the nearest neighbor heuristic or the dynamic phase selection approach, depending on the iteration number.
+    # The algorithm aims to balance exploration and exploitation to find an efficient path for the traveling salesman problem.
+    # It starts by randomly selecting a node from the unvisited nodes with a 10% probability, then iteratively selects the next node based on
+    # either the nearest neighbor heuristic or the dynamic phase selection approach, depending on the iteration number.
+    # The algorithm returns the next node to visit based on the current node, destination node, unvisited nodes, and distance matrix.
+    # The code function must be called 'select_next_node' that takes inputs 'current_node', 'destination_node', 'unvisited_nodes', and 'distance_matrix',
+    # and outputs the 'next_node', where 'current_node', 'destination_node', 'next_node', and 'unvisited_nodes' are node IDs.
+    # Implementation steps:
+    # 1. With 10% probability, select a random node from the unvisited nodes.
+    # 2. With 90% probability, determine the next node based on either the nearest neighbor heuristic or the dynamic phase selection approach.
+    # 3. Return the next node to visit.
+    # End
+```
+==================================================
+解析失败: 代码语法错误: '(' was never closed (<unknown>, line 9)
+完整响应内容:
+ <start>
+        <end>
+</start>
+</think>
+
+```
+<start>
+We propose a novel algorithm called <span class="font-semibold">DynamicExplore</span> that combines the strengths of the Random Nearest Neighbor Algorithm and the Dynamic Stage Selection Algorithm. This approach dynamically adjusts the selection process based on the exploration ratio, balancing between thorough exploration and efficient convergence. The algorithm maintains a record of visited nodes and dynamically selects the next node based on the exploration ratio and the proximity to the destination node.
+</start>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Calculate the exploration ratio
+    visited_ratio = 1 - len(unvisited_nodes) / len(distance_matrix)
+    
+    # Determine the selection criteria based on the exploration ratio
+    if visited_ratio < 0.7:
+        # Select the node with the most unvisited neighbors
+        nearest_neighbors = [n for n in unvisited_nodes if distance_matrix[current_node][n] < distance_matrix[destination_node][n]]
+        return max(nearest_neighbors, key=lambda x: len([m for m in unvisited_nodes if distance_matrix[x][m] < distance_matrix[current_node][m]])
+    else:
+        # Converge to the nearest unvisited node
+        return min(unvisited_nodes, key=lambda x: distance_matrix[current_node][x])
+```
+==================================================
+解析失败: 代码语法错误: expected an indented block after function definition on line 1 (<unknown>, line 15)
+完整响应内容:
+ <start>
+        <end>
+</think>
+
+```
+<start>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Algorithm description: This algorithm combines elements of the random nearest neighbor and dynamic phase selection approaches.
+    # It first selects a random node from the unvisited nodes with a 10% probability, then iteratively selects the next node based on either
+    # the nearest neighbor heuristic or the dynamic phase selection approach, depending on the iteration number.
+    # The algorithm aims to balance exploration and exploitation to find an efficient path for the traveling salesman problem.
+    # It starts by randomly selecting a node from the unvisited nodes with a 10% probability, then iteratively selects the next node based on
+    # either the nearest neighbor heuristic or the dynamic phase selection approach, depending on the iteration number.
+    # The algorithm returns the next node to visit based on the current node, destination node, unvisited nodes, and distance matrix.
+    # The code function must be called 'select_next_node' that takes inputs 'current_node', 'destination_node', 'unvisited_nodes', and 'distance_matrix',
+    # and outputs the 'next_node', where 'current_node', 'destination_node', 'next_node', and 'unvisited_nodes' are node IDs.
+    # Implementation steps:
+    # 1. With 10% probability, select a random node from the unvisited nodes.
+    # 2. With 90% probability, determine the next node based on either the nearest neighbor heuristic or the dynamic phase selection approach.
+    # 3. Return the next node to visit.
+    # End
+```
+==================================================
+解析失败: 代码语法错误: '(' was never closed (<unknown>, line 6)
+完整响应内容:
+ <start>
+        <end>
+</start>
+</think>
+
+``<start>
+I'll create a new algorithm called the "Dynamic-Adaptive Route Optimization Algorithm" (DARO-Algorithm). This algorithm combines elements from both the dynamic phase exploration algorithm (Algorithm 1) and the maximum-minimum distance balance algorithm (Algorithm 2) to create a more robust and efficient route optimization solution.
+
+The DARO-Algorithm works by first performing a dynamic exploration phase where it selects the next node based on a combination of unvisited nodes and their distances from the current node. Once a certain percentage of nodes have been visited (determined by the unvisited_nodes ratio), it transitions to a balance phase where it selects the next node based on a weighted combination of the current distance and the minimum future distance to unvisited nodes.
+
+This approach allows the algorithm to first explore the most promising paths while also ensuring that it converges towards an optimal route by balancing current and future distances.
+</start>
+
+```python
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # Dynamic phase exploration: prioritize nodes with fewer connections
+    visited_ratio = 1 - len(unvisited_nodes) / len(distance_matrix)
+    if visited_ratio < 0.7:
+        # Select the node with the fewest connections
+        next_node = max(unvisited_nodes, key=lambda x: len([n for n in unvisited_nodes if distance_matrix[x][n] < distance_matrix[current_node][n]])
+    else:
+        # Balance phase: prioritize nodes with the smallest future distance
+        best_score = -float('inf')
+        best_node = unvisited_nodes[0]
+        for node in unvisited_nodes:
+            current_dist = distance_matrix[current_node][node]
+            min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+            score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+            if score > best_score:
+                best_score = score
+                best_node = node
+        next_node = best_node
+    return next_node
+```
+==================================================
