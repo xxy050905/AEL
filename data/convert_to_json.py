@@ -52,5 +52,5 @@ def txt_to_json(data_path, output_file="algorithms.json"):
     print(f"成功转换 {len(algorithms)} 个算法到 {output_path}")
 
 if __name__ == "__main__":
-    data_path = "D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\TSP\\data"
+    data_path = "D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data"
     txt_to_json(data_path)

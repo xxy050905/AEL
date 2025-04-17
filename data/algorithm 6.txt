@@ -1,14 +1,47 @@
-<start>' and end with '<end>
+<start>平衡密度与最小距离的节点选择<end>
 def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
-    # Algorithm description: This algorithm combines the strengths of the two provided algorithms.
-    # It first performs a density-based exploration to identify high-density regions, then uses a dynamic
-    # exploration strategy that prioritizes nodes with fewer connections in the early stages and
-    # higher connections in the latter stages.
-    # Implementation steps:
-    # 1. Calculate the density scores for all unvisited nodes based on the distance matrix.
-    # 2. Identify the nodes with the highest density scores.
-    # 3. Perform a breadth-first search (BFS) to explore these high-density regions.
-    # 4. In the early stages, prioritize nodes with fewer connections to explore less dense areas.
-    # 5. In the latter stages, prioritize nodes with more connections to converge on the optimal path.
-    # Return the next node based on the dynamic exploration strategy.
-    pass
+    import numpy as np
+    # Calculate density scores for unvisited nodes
+    density_scores = []
+    for node in unvisited_nodes:
+        density = np.mean(distance_matrix[current_node][unvisited_nodes])
+        density_scores.append(density)
+
+    # Identify high-density regions
+    high_density_nodes = [node for node, score in zip(unvisited_nodes, density_scores) if score > np.mean(density_scores)]
+
+    # Perform BFS on high-density regions
+    visited = set()
+    queue = [high_density_nodes[0]]
+    visited.add(high_density_nodes[0])
+
+    while queue:
+        current = queue.pop(0)
+        for neighbor in unvisited_nodes:
+            if distance_matrix[current][neighbor] < 0.5 and neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+
+    # Dynamic exploration strategy
+    if len(visited) < len(unvisited_nodes):
+        # Prioritize nodes with fewer connections
+        scores = []
+        for node in unvisited_nodes:
+            score = np.mean(distance_matrix[node][visited])
+            scores.append(score)
+        best_node = unvisited_nodes[0]
+        for i, node in enumerate(unvisited_nodes):
+            if scores[i] < scores[best_node]:
+                best_node = node
+    else:
+        # Prioritize nodes with more connections
+        scores = []
+        for node in unvisited_nodes:
+            score = np.mean(distance_matrix[node][visited])
+            scores.append(score)
+        best_node = unvisited_nodes[0]
+        for i, node in enumerate(unvisited_nodes):
+            if scores[i] > scores[best_node]:
+                best_node = node
+
+    return best_node
