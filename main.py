@@ -181,7 +181,7 @@ class AEL_TSP:
         except Exception as e:
             error_msg = f"解析失败: {str(e)}\n原始响应片段:\n{response[:500]}..."
             logging.error(error_msg)
-            with open("parse_errors.log", "a") as f:
+            with open("D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\log\\parse_llm_response_error.log", "a") as f:
                 f.write(f"{'='*50}\n{error_msg}\n{'='*50}\n")
             return None, None
 
@@ -269,7 +269,7 @@ class AEL_TSP:
     def evaluate_algorithm(self, code):
         # 保存算法到临时文件（使用绝对路径）
         temp_dir = "D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL"
-        temp_file = f"temp_algorithm_{os.getpid()}.py"
+        temp_file = f"temp_algorithm_.py"
         temp_path = os.path.join(temp_dir, temp_file)
     
         try:
@@ -280,9 +280,6 @@ class AEL_TSP:
             with open(temp_path, "w", encoding="utf-8") as f:
                 f.write(code + "\n\n")
                 logging.info(f"成功写入临时文件：{temp_path}")
-        
-            total_gap = 0
-            valid_evaluations = 0
         
             for instance, optimal in zip(self.eval_instances, self.optimal_solutions):
                 # 验证实例文件存在
@@ -301,29 +298,29 @@ class AEL_TSP:
                     )
                 
                     # 解析结果
-                    result = json.loads(process.stdout)
-                
-                    if result["status"] == "success":
-                        current_gap = (result["distance"] - optimal) / optimal * 100
-                        total_gap += max(current_gap, 0)
-                        valid_evaluations += 1
-                    else:
-                        logging.warning(f"评估失败：{result.get('message', '未知错误')}")
+                    file_path = r"D:\Paper\Algorithm Evolution Using Large Language Model\code\AEL\data\tsp_result.json"
+
+                    try:
+                        with open(file_path, 'r', encoding='utf-8') as f:
+                            result = json.load(f)  # 正确使用文件对象
+                            if result["status"]:
+                                return result["status"]
+                            else:
+                                logging.info("The algorithm can not run")
+                                return result["status"]
                     
-                except (subprocess.CalledProcessError, json.JSONDecodeError) as e:
-                    error_info = {
+                    except (subprocess.CalledProcessError, json.JSONDecodeError) as e:
+                        error_info = {
                         "error_type": type(e).__name__,
                         "error_msg": str(e),
                         "instance": instance,
                         "temp_file": temp_path,
                         "stdout": process.stdout if 'process' in locals() else '',
                         "stderr": process.stderr if 'process' in locals() else ''
-                    }
-                    logging.error(json.dumps(error_info, indent=2))
-                
-            # 处理无效评估情况
-            return total_gap / valid_evaluations if valid_evaluations > 0 else float('inf')
-        
+                        }
+                        logging.error(json.dumps(error_info, indent=2))
+                except:
+                    logging.info("evaluate algorithm failed")
         finally:
             # 确保清理临时文件
             try:

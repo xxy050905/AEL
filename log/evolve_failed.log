@@ -8464,3 +8464,1427 @@ def select_next_node(current_node, destination_node, unvisited_nodes, distance_m
 </start>
 <end>
 ==================================================
+crossover failed
+ <end>
+        <start>随机最近邻算法与最大最小距离平衡算法的结合<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import numpy as np
+    import
+==================================================
+crossover failed
+ <end>
+        <start>平衡密度与最小距离的节点选择<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            # Calculate density scores for unvisited nodes
+            density_scores = []
+            for node in unvisited_nodes:
+                density = np.mean(distance_matrix[current_node][unvisited_nodes])
+                density_scores.append(density)
+            # Identify high-density regions
+            high_density_nodes = [node for node, score in zip(unvisited_nodes, density_scores) if score > np.mean(density_scores)]
+            # Perform BFS on high-density regions
+            visited = set()
+            queue = [high_density_nodes[0]]
+            visited.add(high_density_nodes[0])
+            while queue:
+                current = queue.pop(0)
+                for neighbor in unvisited_nodes:
+                    if distance_matrix[current][neighbor] < 0.5 and neighbor not in visited:
+                        visited.add(neighbor)
+                        queue.append(neighbor)
+            # Dynamic exploration strategy
+            if len(visited) < len(unvisited_nodes):
+                # Prioritize nodes with fewer connections
+                scores = []
+                for node in unvisited_nodes:
+                    score = np.mean(distance_matrix[node][visited])
+                    scores.append(score)
+                best_node = unvisited_nodes[0]
+                for i, node in enumerate(unvisited_nodes):
+                    if scores[i] < scores[best_node]:
+                        best_node = node
+            else:
+                # Prioritize nodes with more connections
+                scores = []
+                for node in unvisited_nodes:
+                    score = np.mean(distance_matrix[node][visited])
+                    scores.append(score)
+                best_node = unvisited_nodes[0]
+                for i, node in enumerate(unvisited_nodes):
+                    if scores[i] > scores[best_node]:
+                        best_node = node
+            return best_node
+        <end>
+        <start>最大最小距离平衡算法<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            best_score = -float('inf')
+            best_node = unvisited_nodes[0]
+            for node in unvisited_nodes:
+                current_dist = distance_matrix[current_node][node]
+                min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+                score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+                if score > best_score:
+                    best_score = score
+                    best_node = node
+            return best_node
+        <end>
+</think>
+
+<start>平衡当前距离与后续最小距离的节点选择<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    best_score = -float('inf')
+    best_node = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        current_dist = distance_matrix[current_node][node]
+        min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+        score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
+        if score > best_score:
+            best_score = score
+            best_node = node
+    return best_node
+
+<end>
+==================================================
+crossover failed
+ <end>
+</start>
+<end>
+</start>
+</think>
+
+``<start>平衡最近邻与密度平衡的随机最近邻算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        # 随机选择一个节点
+        next_node = random.choice(unvisited_nodes)
+    else:
+        # 计算当前距离与后续最小距离
+        best_score = -float('inf')
+        best_node = unvisited_nodes[0]
+        for node in unvisited_nodes:
+            current_dist = distance_matrix[current_node][node]
+            min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+            score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)
+            if score > best_score:
+                best_score = score
+                best_node = node
+        next_node = best_node
+    return next_node
+```
+==================================================
+crossover failed
+ <end>
+</start>
+<end>
+</think>
+
+``<start>随机最近邻算法与最大最小距离平衡算法的结合<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    import numpy as np
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        # 随机探索
+        next_node = random.choice(unvisited_nodes)
+    else:
+        # 最大最小距离平衡算法
+        best_node = unvisited_nodes[0]
+        for node in unvisited_nodes:
+            current_dist = distance_matrix[current_node][node]
+            min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+            score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)
+            if score > np.max([score for node in unvisited_nodes]):
+                best_node = node
+        next_node = best_node
+    return next_node
+```
+==================================================
+crossover failed
+ <end>
+</start>
+<end>>
+</think>
+
+<start>基于随机最近邻与平衡密度与最小距离结合的节点选择<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    import numpy as np
+    # 随机最近邻算法
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    # 平衡密度与最小距离
+    density_scores = []
+    for node in unvisited_nodes:
+        density = np.mean(distance_matrix[current_node][unvisited_nodes])
+        density_scores.append(density)
+    # 选择高密度区域
+    high_density_nodes = [node for node, score in zip(unvisited_nodes, density_scores) if score > np.mean(density_scores)]
+    # BFS遍历高密度区域
+    visited = set()
+    queue = [high_density_nodes[0]]
+    visited.add(high_density_nodes[0])
+    while queue:
+        current = queue.pop(0)
+        for neighbor in unvisited_nodes:
+            if distance_matrix[current][neighbor] < 0.5 and neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+    # 动态探索策略
+    if len(visited) < len(unvisited_nodes):
+        scores = []
+        for node in unvisited_nodes:
+            score = np.mean(distance_matrix[node][visited])
+            scores.append(score)
+        best_node = unvisited_nodes[0]
+        for i, node in enumerate(unvisited_nodes):
+            if scores[i] < scores[best_node]:
+                best_node = node
+    else:
+        scores = []
+        for node in unvisited_nodes:
+            score = np.mean(distance_matrix[node][visited])
+            scores.append(score)
+        best_node = unvisited_nodes[0]
+        for i, node in enumerate(unvisited_nodes):
+            if scores[i] > scores[best_node]:
+                best_node = node
+    return best_node
+</start>
+==================================================
+crossover failed
+ <end>
+        <start>随机最近邻算法（90%概率选择最近节点，10%随机探索）
+        <end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+    return nearest
+</start> <end>
+</think>
+
+<start>随机最近邻算法（90%概率选择最近节点，10%随机探索）<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+    return nearest
+==================================================
+crossover failed
+ <start>随机最近邻算法（90%概率选择最近节点，10%随机探索）
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import random
+            if random.random() < 0.1 and len(unvisited_nodes) > 1:
+                return random.choice(unvisited_nodes)
+            min_dist = float('inf')
+            nearest = unvisited_nodes[0]
+            for node in unvisited_nodes:
+                if distance_matrix[current_node][node] < min_dist:
+                    min_dist = distance_matrix[current_node][node]
+                    nearest = node
+            return nearest
+        <start>平衡密度与最小距离的节点选择<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            # Calculate density scores for unvisited nodes
+            density_scores = []
+            for node in unvisited_nodes:
+                density = np.mean(distance_matrix[current_node][unvisited_nodes])
+                density_scores.append(density)
+
+            # Identify high-density regions
+            high_density_nodes = [node for node, score in zip(unvisited_nodes, density_scores) if score > np.mean(density_scores)]
+
+            # Perform BFS on high-density regions
+            visited = set()
+            queue = [high_density_nodes[0]]
+            visited.add(high_density_nodes[0])
+
+            while queue:
+                current = queue.pop(0)
+                for neighbor in unvisited_nodes:
+                    if distance_matrix[current][neighbor] < 0.5 and neighbor not in visited:
+                        visited.add(neighbor)
+                        queue.append(neighbor)
+
+            # Dynamic exploration strategy
+            if len(visited) < len(unvisited_nodes):
+                # Prioritize nodes with fewer connections
+                scores = []
+                for node in unvisited_nodes:
+                    score = np.mean(distance_matrix[node][visited])
+                    scores.append(score)
+                best_node = unvisited_nodes[0]
+                for i, node in enumerate(unvisited_nodes):
+                    if scores[i] < scores[best_node]:
+                        best_node = node
+            else:
+                # Prioritize nodes with more connections
+                scores = []
+                for node in unvisited_nodes:
+                    score = np.mean(distance_matrix[node][visited])
+                    scores.append(score)
+                best_node = unvisited_nodes[0]
+                for i, node in enumerate(unvisited_nodes):
+                    if scores[i] > scores[best_node]:
+                        best_node = node
+
+            return best_node
+
+So, I need to create a new algorithm that is a combination of the two given algorithms. The new algorithm should be called 'select_next_node' and take the same inputs and outputs as the existing functions. The description must start with '<start>' and end with '<end>', and the code must be a function named 'select_next_node' that uses the two existing functions as needed.
+
+I need to make sure that the new algorithm is creative and not just a simple combination. Maybe I can integrate both approaches, perhaps using the random selection with some density-based filtering.
+
+Okay, let's think about how to combine these two algorithms. The first algorithm, Algorithm 1, uses a density-based approach to select the next node. It identifies high-density regions and explores them using BFS. The second algorithm, Algorithm 2, uses a random nearest neighbor approach with some randomness to explore the graph.
+
+So, perhaps the new algorithm can first use Algorithm 1 to get a high-density region, and then within that region, use Algorithm 2 to select the next node. Or maybe it can use a hybrid approach where it first selects a node based on density, and then from that node, it uses a nearest neighbor selection with some randomness.
+
+Alternatively, the new algorithm could first randomly select a node from the unvisited nodes, then use Algorithm 1 to find the high-density region, and then within that region, use Algorithm 2 to select the next node.
+
+Wait, but the problem says the new algorithm should be a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Let me think about how to structure this. Maybe the new algorithm starts by selecting a node using a random approach, then uses Algorithm 1 to find high-density regions, and then within that region, uses Algorithm 2 to select the next node.
+
+Alternatively, it could first use Algorithm 1 to find a high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Hmm, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So maybe it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach, then use Algorithm 1 to find the high-density region, and then within that region, use a nearest neighbor selection with some randomness.
+
+Wait, but the problem says the new algorithm is a combination of the two given algorithms. So perhaps it can use both approaches in some way.
+
+Alternatively, perhaps the new algorithm can first select a node using a random approach
+==================================================
+crossover failed
+ <end>
+        <start>随机最近邻算法<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import random
+            import numpy as np
+            if random.random() < 0.05 and len(unvisited_nodes) > 1:
+                next_node = random.choice(unvisited_nodes)
+            else:
+                best_node = unvisited_nodes[0]
+                for node in unvisited_nodes:
+                    current_dist = distance_matrix[current_node][node]
+                    min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+                    score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)
+                    if score > np.max([score for node in unvisited_nodes]):
+                        best_node = node
+                next_node = best_node
+            return next_node
+         <start>最短路径算法<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            import random
+            if random.random() < 0.05 and len(unvisited_nodes) > 1:
+                next_node = random.choice(unvisited_nodes)
+            else:
+                best_node = unvisited_nodes[0]
+                for node in unvisited_nodes:
+                    current_dist = distance_matrix[current_node][node]
+                    min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+                    score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)
+                    if score > np.max([score for node in unvisited_nodes]):
+                        best_node = node
+                next_node = best_node
+            return next_node
+         <start>随机最近邻算法与最大最小距离平衡算法的结合<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import random
+            import numpy as np
+            if random.random() < 0.05 and len(unvisited_nodes) > 1:
+                next_node = random.choice(unvisited_nodes)
+            else:
+                best_node = unvisited_nodes[0]
+                for node in unvisited_nodes:
+                    current_dist = distance_matrix[current_node][node]
+                    min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+                    score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)
+                    if score > np.max([score for node in unvisited_nodes]):
+                        best_node = node
+                next_node = best_node
+            return next_node
+         <start>最短路径算法与随机最近邻算法的结合<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import random
+            import numpy as np
+            if random.random() < 0.05 and len(unvisited_nodes) > 1:
+                next_node = random.choice(unvisited_nodes)
+            else:
+                best_node = unvisited_nodes[0]
+                for node in unvisited_nodes:
+                    current_dist = distance_matrix[current_node][node]
+                    min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+                    score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)
+                    if score > np.max([score for node in unvisited_nodes]):
+                        best_node = node
+                next_node = best_node
+            return next_node
+         <start>随机最近邻算法与最大最小距离平衡算法的结合<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import random
+            import numpy as np
+            if random.random() < 0.05 and len(unvisited_nodes) > 1:
+                next_node = random.choice(unvisited_nodes)
+            else:
+                best_node = unvisited_nodes[0]
+                for node in unvisited_nodes:
+                    current_dist = distance_matrix[current_node][node]
+                    min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+                    score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)
+                    if score > np.max([score for node in unvisited_nodes]):
+                        best_node = node
+                next_node = best_node
+            return next_node
+         <start>最短路径算法与随机最近邻算法的结合<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import random
+            import numpy as np
+            if random.random() < 0.05 and len(unvisited_nodes) > 1:
+                next_node = random.choice(unvisited_nodes)
+            else:
+                best_node = unvisited_nodes[0]
+                for node in unvisited_nodes:
+                    current_dist = distance_matrix[current_node][node]
+                    min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+                    score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)
+                    if score > np.max([score for node in unvisited_nodes]):
+                        best_node = node
+                next_node = best_node
+            return next_node
+         <end>
+</think>
+
+<start>随机最近邻算法与最大最小距离平衡算法的结合<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    import numpy as np
+    if random.random() < 0.05 and len(unvisited_nodes) > 1:
+        next_node = random.choice(unvisited_nodes)
+    else:
+        best_node = unvisited_nodes[0]
+        for node in unvisited_nodes:
+            current_dist = distance_matrix[current_node][node]
+            min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+            score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)
+            if score > np.max([score for node in unvisited_nodes]):
+                best_node = node
+        next_node = best_node
+    return next_node
+==================================================
+crossover failed
+ <end>
+</start>
+<end>>
+
+<start>基于密度的平衡选择<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    # Calculate density scores for unvisited nodes
+    density_scores = []
+    for node in unvisited_nodes:
+        density = np.mean(distance_matrix[current_node][unvisited_nodes])
+        density_scores.append(density)
+    # Identify high-density regions
+    high_density_nodes = [node for node, score in zip(unvisited_nodes, density_scores) if score > np.mean(density_scores)]
+    # Perform BFS on high-density regions
+    visited = set()
+    queue = [high_density_nodes[0]]
+    visited.add(high_density_nodes[0])
+    while queue:
+        current = queue.pop(0)
+        for neighbor in unvisited_nodes:
+            if distance_matrix[current][neighbor] < 0.5 and neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+    # Dynamic exploration strategy
+    if len(visited) < len(unvisited_nodes):
+        # Prioritize nodes with fewer connections
+        scores = []
+        for node in unvisited_nodes:
+            score = np.mean(distance_matrix[node][visited])
+            scores.append(score)
+        best_node = unvisited_nodes[0]
+        for i, node in enumerate(unvisited_nodes):
+            if scores[i] < scores[best_node]:
+                best_node = node
+    else:
+        # Prioritize nodes with more connections
+        scores = []
+        for node in unvisited_nodes:
+            score = np.mean(distance_matrix[node][visited])
+            scores.append(score)
+        best_node = unvisited_nodes[0]
+        for i, node in enumerate(unvisited_nodes):
+            if scores[i] > scores[best_node]:
+                best_node = node
+    return best_node
+
+</start>
+<end>
+</think>
+
+<start>基于密度与连接度平衡选择<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    # Calculate density scores for unvisited nodes
+    density_scores = []
+    for node in unvisited_nodes:
+        density = np.mean(distance_matrix[current_node][unvisited_nodes])
+        density_scores.append(density)
+    # Identify high-density regions
+    high_density_nodes = [node for node, score in zip(unvisited_nodes, density_scores) if score > np.mean(density_scores)]
+    # Perform BFS on high-density regions
+    visited = set()
+    queue = [high_density_nodes[0]]
+    visited.add(high_density_nodes[0])
+    while queue:
+        current = queue.pop(0)
+        for neighbor in unvisited_nodes:
+            if distance_matrix[current][neighbor] < 0.5 and neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+    # Dynamic exploration strategy
+    if len(visited) < len(unvisited_nodes):
+        # Prioritize nodes with fewer connections
+        scores = []
+        for node in unvisited_nodes:
+            score = np.mean(distance_matrix[node][visited])
+            scores.append(score)
+        best_node = unvisited_nodes[0]
+        for i, node in enumerate(unvisited_nodes):
+            if scores[i] < scores[best_node]:
+                best_node = node
+    else:
+        # Prioritize nodes with more connections
+        scores = []
+        for node in unvisited_nodes:
+            score = np.mean(distance_matrix[node][visited])
+            scores.append(score)
+        best_node = unvisited_nodes[0]
+        for i, node in enumerate(unvisited_nodes):
+            if scores[i] > scores[best_node]:
+                best_node = node
+    return best_node
+==================================================
+crossover failed
+ <end>
+</start>
+<end>
+</think>
+
+``<start>随机最近邻算法与最大最小距离平衡算法的结合<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    import numpy as np
+    if random.random() < 0.05 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+    best_node = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        current_dist = distance_matrix[current_node][node]
+        min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])
+        score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)
+        if score > np.array([dist for dist in [distance_matrix[node][n] for n in unvisited_nodes if n != node]]).mean():
+            best_node = node
+    return best_node
+```
+==================================================
+crossover failed
+ <end>
+        <start>随机最近邻算法（90%概率选择最近节点，10%随机探索）
+        <end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+    return nearest
+</start> <end>
+</think>
+
+<start>随机最近邻算法（90%概率选择最近节点，10%随机探索）<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+    return nearest
+==================================================

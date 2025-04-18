@@ -5798,3 +5798,86 @@ def select_next_node(current_node, destination_node, unvisited_nodes, distance_m
     
     return next_node
 ==================================================
+==================================================
+解析失败: expected an indented block after 'if' statement on line 5 (<unknown>, line 5)
+原始响应片段:
+ 
+
+随机最近邻算法与最大最小距离平衡算法的结合
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    import numpy as np
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        # 随机探索
+        next_node = random.choice(unvisited_nodes)
+    else:
+        # 最大最小距离平衡算法
+        best_node = unvisited_nodes[0]
+        for node in unvisited_nodes:
+            current_dist = distance_matrix[current_node][node]
+            min_future_dist = min([distance_matrix[...
+==================================================
+==================================================
+解析失败: invalid character '，' (U+FF0C) (<unknown>, line 14)
+原始响应片段:
+ 
+        随机最近邻算法（90%概率选择最近节点，10%随机探索）
+        
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest =...
+==================================================
+==================================================
+解析失败: unindent does not match any outer indentation level (<unknown>, line 12)
+原始响应片段:
+ 随机最近邻算法（90%概率选择最近节点，10%随机探索）
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import random
+            if random.random() < 0.1 and len(unvisited_nodes) > 1:
+                return random.choice(unvisited_nodes)
+            min_dist = float('inf')
+            nearest = unvisited_nodes[0]
+            for node in unvisited_nodes:
+                if distance_matrix[current_node][node] < min_dist:
+                    min_dist = distance_ma...
+==================================================
+==================================================
+解析失败: unindent does not match any outer indentation level (<unknown>, line 16)
+原始响应片段:
+ 
+        随机最近邻算法
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import random
+            import numpy as np
+            if random.random() < 0.05 and len(unvisited_nodes) > 1:
+                next_node = random.choice(unvisited_nodes)
+            else:
+                best_node = unvisited_nodes[0]
+                for node in unvisited_nodes:
+                    current_dist = distance_matrix[current_node][node]
+                    m...
+==================================================
+==================================================
+解析失败: invalid character '，' (U+FF0C) (<unknown>, line 14)
+原始响应片段:
+ 
+        随机最近邻算法（90%概率选择最近节点，10%随机探索）
+        
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest =...
+==================================================

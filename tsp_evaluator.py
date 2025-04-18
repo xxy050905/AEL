@@ -1,105 +1,109 @@
 import sys
-import json
 import math
-import importlib.util
-from typing import List
+import json
+sys.path.append(r"D:\Paper\Algorithm Evolution Using Large Language Model\code\AEL")
+# from temp_algorithm_ import select_next_node
 
-def calculate_distance(path: List[int], distance_matrix: List[List[float]]) -> float:
-    """计算路径总距离（包含返回起点的距离）"""
-    total = 0.0
-    for i in range(len(path)-1):
-        total += distance_matrix[path[i]][path[i+1]]
-    # 添加回到起点的距离
-    total += distance_matrix[path[-1]][path[0]]
-    return total
-
-def load_tsp_instance(file_path: str) -> List[List[float]]:
-    """加载TSP实例文件并生成距离矩阵"""
-    nodes = []
+def read_tsp_data(file_path):
+    """解析TSPLIB格式数据，返回坐标列表 [[6]]"""
+    cities = []
     with open(file_path, 'r') as f:
-        read_coords = False
         for line in f:
-            line = line.strip()
             if line.startswith('NODE_COORD_SECTION'):
-                read_coords = True
-                continue
-            if line == 'EOF':
                 break
-            if read_coords and line:
-                parts = line.split()
-                nodes.append((float(parts[1]), float(parts[2])))
-    
-    # 计算距离矩阵
-    dimension = len(nodes)
-    distance_matrix = [[0.0]*dimension for _ in range(dimension)]
-    for i in range(dimension):
-        for j in range(i+1, dimension):
-            dx = nodes[i][0] - nodes[j][0]
-            dy = nodes[i][1] - nodes[j][1]
-            dist = math.sqrt(dx**2 + dy**2)
-            distance_matrix[i][j] = dist
-            distance_matrix[j][i] = dist
-    return distance_matrix
+        for line in f:
+            if line.strip() == 'EOF':
+                break
+            parts = line.strip().split()
+            cities.append((float(parts[1]), float(parts[2])))
+    return cities
 
-def validate_solution(path: List[int], dimension: int):
-    """验证解的合法性"""
-    if len(path) != dimension:
-        raise ValueError(f"路径不完整，应包含{dimension}个节点，实际{len(path)}个")
+def calculate_distance_matrix(cities):
+    """构建欧氏距离矩阵 [[4]]"""
+    n = len(cities)
+    return [
+        [math.hypot(c1[0]-c2[0], c1[1]-c2[1]) for c2 in cities] 
+        for c1 in cities
+    ]
+
+def is_feasible(path, num_cities):
+    """验证TSP路径可行性 [[6]][[8]]"""
+    if len(path) != num_cities + 1:
+        return False
+    if path[0] != path[-1]:
+        return False
+    visited = set(path[:-1])
+    return len(visited) == num_cities and visited == set(range(num_cities))
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    total_nodes = len(distance_matrix)
+    visited_ratio = 1 - len(unvisited_nodes)/total_nodes 
+    if visited_ratio < 0.7:
+        best_node = None
+        max_score = -float('inf')
+        for node in unvisited_nodes:
+            valid_neighbors = sum(1 for n in unvisited_nodes 
+                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])
+            current_dist = distance_matrix[current_node][node]
+            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))
+            if score > max_score or (score == max_score and 
+                                    distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):
+                max_score = score
+                best_node = node
+        return best_node
+    else:
+        return min(unvisited_nodes, 
+                   key=lambda x: (distance_matrix[current_node][x] + 
+                                  0.3 * distance_matrix[x][destination_node]))
+def solve_tsp():
+    # 加载数据
+    cities = read_tsp_data(
+        r"D:\Paper\Algorithm Evolution Using Large Language Model\code\AEL\data\berlin52.tsp"
+    )
+    distance_matrix = calculate_distance_matrix(cities)
+    n = len(cities)
     
-    if sorted(path) != list(range(dimension)):
-        raise ValueError("路径包含重复或非法节点")
-    
-def solve_tsp(distance_matrix: List[List[float]]) -> List[int]:
-    """基于select_next_node的TSP求解主逻辑"""
-    dimension = len(distance_matrix)
+    # 初始化参数
     current_node = 0
     destination_node = 0
-    unvisited = set(range(1, dimension))
+    unvisited_nodes = list(range(1, n))
     path = [current_node]
+    total_distance = 0
     
-    while unvisited:
-        try:
-            next_node = select_next_node(
-                current_node=current_node,
-                destination_node=destination_node,
-                unvisited_nodes=list(unvisited),
-                distance_matrix=distance_matrix
-            )
-            
-            if next_node not in unvisited:
-                raise ValueError(f"非法节点选择：{next_node}，剩余可选节点：{unvisited}")
-            
-            path.append(next_node)
-            unvisited.remove(next_node)
-            current_node = next_node
-        except Exception as e:
-            raise RuntimeError(f"节点选择失败：{str(e)}")
+    # 构建路径
+    while unvisited_nodes:
+        next_node = select_next_node(
+            current_node=current_node,
+            destination_node=destination_node,
+            unvisited_nodes=unvisited_nodes.copy(),
+            distance_matrix=distance_matrix
+        )
+        total_distance += distance_matrix[current_node][next_node]
+        path.append(next_node)
+        unvisited_nodes.remove(next_node)
+        current_node = next_node
     
-    # 最后添加返回起点的步骤（可选）
+    total_distance += distance_matrix[path[-1]][destination_node]
     path.append(destination_node)
-    return path
+    
+    feasible = is_feasible(path, n)
+    
+    return path, total_distance, feasible
 
-# 修改主程序参数处理
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print(json.dumps({
-            "status": "error",
-            "message": "参数错误，需要2个参数：算法文件 实例文件"
-        }))
-        sys.exit(1)
-
-    algorithm_file = sys.argv[1]
-    instance_file = sys.argv[2]
-
-    # 动态加载算法模块
+    path, distance, feasible = solve_tsp()
+    
+    # 创建结果字典
+    result = {
+        "status": feasible,
+        "total_distance": distance,
+        "path_length": len(path)
+    }
+    
+    # 写入JSON文件（带异常处理）
     try:
-        spec = importlib.util.spec_from_file_location("dynamic_algorithm", algorithm_file)
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-        select_next_node = module.select_next_node
+        with open(r"D:\Paper\Algorithm Evolution Using Large Language Model\code\AEL\data\tsp_result.json", 
+                  'w', encoding='utf-8') as f:
+            json.dump(result, f, ensure_ascii=False, indent=2)
+        print("结果已成功写入JSON文件")
     except Exception as e:
-        print(json.dumps({
-            "status": "error",
-            "message": f"算法加载失败：{str(e)}"
-        }))
-        sys.exit(1)
+        print(f"写入JSON文件失败: {str(e)}")
