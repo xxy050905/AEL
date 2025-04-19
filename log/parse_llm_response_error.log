@@ -5881,3 +5881,16 @@ def select_next_node(current_node, destination_node, unvisited_nodes, distance_m
             min_dist = distance_matrix[current_node][node]
             nearest =...
 ==================================================
+==================================================
+解析失败: unexpected indent (<unknown>, line 1)
+原始响应片段:
+ 
+
+:start>优先选择密度高的节点
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # 计算每个未访问节点的密度
+    density = [sum(distance_matrix[current_node][n] for n in unvisited_nodes) for n in unvisited_nodes]
+    # 选择密度最高的节点
+    return unvisited_nodes.index(min(unvisited_nodes, key=lambda n: density[n-1]))
+...
+==================================================

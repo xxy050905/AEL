@@ -1,0 +1,4 @@
+<start>优先选择密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    return next_node
+    import numpy as np

@@ -4,10 +4,12 @@ def select_next_node(current_node, destination_node, unvisited_nodes, distance_m
     best_node = unvisited_nodes[0]
     for node in unvisited_nodes:
         current_dist = distance_matrix[current_node][node]
+        if current_dist <= 1e-10:
+            current_dist = 1e-10 
         future_distances = [distance_matrix[node][n] for n in unvisited_nodes if n != node]
         min_future_dist = min(future_distances) if future_distances else float('inf')
-        if min_future_dist == 0:
-            min_future_dist = 1e-10
+        if min_future_dist <= 1e-10:
+            min_future_dist = 1e-10  
         score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)
         if score > best_score:
             best_score = score

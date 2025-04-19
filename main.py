@@ -9,6 +9,8 @@ import os
 import logging
 import ast
 import textwrap
+from datetime import datetime
+import traceback
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 logging.basicConfig(level=logging.INFO)
@@ -46,7 +48,7 @@ class AEL_TSP:
         2. 代码必须定义为函数：def select_next_node(...):
         3. 禁止添加任何额外解释或注释
     
-        ## 示例：
+        output example：
         <start>优先选择距离近且密度高的节点<end>
         def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
             import numpy as np
@@ -90,7 +92,8 @@ class AEL_TSP:
         {parent_algorithms}
         Please help me create a new algorithm that is motivated by the given algorithms. Provide a brief description of the new algorithm and its corresponding code. The description must start with '<start>' and end with '<end>'. The code function must be called 'select_next_node' that takes inputs 'current_node', 'destination_node', 'unvisited_nodes', and 'distance_matrix', and outputs the 'next_node', where 'current_node', 'destination_node', 'next_node', and 'unvisited_nodes' are node IDs.
         Be creative and do not give any explanation.
-        ## 示例：
+        do not give any explanation.
+        output example：
         <start>优先选择距离近且密度高的节点<end>
         def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
             import numpy as np
@@ -126,102 +129,159 @@ class AEL_TSP:
         Provide a brief description of the modified algorithm and its corresponding code. The description must start with '<start>' and end with '<end>'. The code function must be called 'select_next_node' that takes inputs 'current_node', 'destination_node', 'unvisited_nodes', and 'distance_matrix', and outputs the 'next_node'.
 
         Focus on making meaningful improvements, not just code formatting changes.
+        output example：
+        <start>优先选择距离近且密度高的节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
         """
     def parse_llm_response(self, response):
-        """
-        改进后的LLM响应解析函数，包含以下增强功能：
-        1. 多标签清洗和嵌套处理
-        2. 自动缩进校正
-        3. 参数名称统一化
-        4. 语法自动修复
-        5. 代码有效性验证
-        """
         try:
-            # ========== 预处理阶段 ==========
-            # 清洗所有干扰标签和Markdown符号
-            response = re.sub(r'</?(think|algorithm|start|end|code|explanation)[^>]*>', '', response, flags=re.IGNORECASE)
-            response = re.sub(r'```\w*|`', '', response)  # 去除代码标记
+            # 清洗所有已知干扰标签和符号
+            response = re.sub(r'</?(think|algorithm|code|explanation)[^>]*>', '', response, flags=re.IGNORECASE)
+            response = re.sub(r':+start>', '<start>', response)  # 修复冒号开头的标签
+            response = re.sub(r'```\w*|`', '', response)  # 去除所有代码标记
             response = re.sub(r'\n{3,}', '\n\n', response)  # 压缩多余空行
+            response = re.sub(r'^\s*$\n', '', response, flags=re.MULTILINE)  # 删除空行
 
-            # ========== 算法描述提取 ==========
-            # 支持多语言描述的灵活匹配
+            # 支持多语言描述的灵活匹配（中英文混杂场景）
             desc_match = re.search(
-                r'<start>\s*(.*?)\s*<end>', 
+                r'<start>\s*((?:[^<]|<(?!end>))*?)\s*<end>', 
                 response, 
                 flags=re.DOTALL|re.IGNORECASE
             )
-            description = desc_match.group(1).strip() if desc_match else ""
-
-            # ========== 代码提取与修复 ==========
-            # 增强代码块提取正则表达式
+            if not desc_match:
+                raise ValueError("未找到有效的算法描述标签")
+            description = desc_match.group(1).strip()
+        
+            # 增强代码块提取（兼容带/不带Markdown的情况）
             code_match = re.search(
-                r'(def\s+select_next_node\s*\(.*?\):.*?)(?=\n\s*(def\s|class\s|#|$))',
+                r'(?:```\w*?\n)?(def\s+select_next_node\s*\(.*?\):.*?)(?:```)?(?=\n\s*(?:def\s|class\s|#|$))',
                 response,
                 flags=re.DOTALL|re.IGNORECASE
             )
             if not code_match:
                 raise ValueError("未找到有效的函数定义")
-
             code = code_match.group(1)
+
+            # 参数名称强制统一化
+            param_mapping = {
+                r'\bcurrent[\s_]*node\b': 'current_node',
+                r'\bdest[\s_]*node\b': 'destination_node',
+                r'\bunvisited[\s_]*nodes?\b': 'unvisited_nodes',
+                r'\bdist[\s_]*matrix\b': 'distance_matrix'
+            }
+            for pattern, replacement in param_mapping.items():
+                code = re.sub(pattern, replacement, code, flags=re.IGNORECASE)
+
+            # 自动修复常见语法错误
+            code = self._fix_code_syntax(code)
         
-            # ========== 代码规范化处理 ==========
-            # 自动修复步骤
-            code = self._normalize_code(code)
-        
-            # ========== 最终验证 ==========
+            # 确保必要的库导入
+            if 'import numpy' not in code:
+                code = 'import numpy as np\n' + code
+
             try:
                 ast.parse(code)
             except SyntaxError as e:
-                # 尝试自动修复常见语法错误
-                code = self._fix_syntax_errors(code)
-                ast.parse(code)  # 再次验证
+                # 尝试二次修复
+                repaired_code = self._advanced_syntax_repair(code, str(e))
+                ast.parse(repaired_code)
+                code = repaired_code
 
-            return description.strip(), code.strip()
+            # 标准化缩进
+            code = textwrap.dedent(code).strip()
+            code = '\n'.join([line.rstrip() for line in code.split('\n')])
+        
+            return description, code
 
         except Exception as e:
-            error_msg = f"解析失败: {str(e)}\n原始响应片段:\n{response[:500]}..."
-            logging.error(error_msg)
-            with open("D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\log\\parse_llm_response_error.log", "a") as f:
-                f.write(f"{'='*50}\n{error_msg}\n{'='*50}\n")
+            error_info = {
+                "error": str(e),
+                "response_snippet": response[:1000],
+                "traceback": traceback.format_exc()
+            }
+            self._log_parse_error(error_info)
             return None, None
 
-    def _normalize_code(self, code):
-        """代码规范化处理"""
-        # 统一参数名称
-        code = re.sub(r'\b(current\s*node)\b', 'current_node', code, flags=re.IGNORECASE)
-        code = re.sub(r'\b(unvisited\s*nodes)\b', 'unvisited_nodes', code, flags=re.IGNORECASE)
+    def _fix_code_syntax(self, code):
+        """多阶段语法修复"""
+        # 修复中文标点
+        code = code.translate(str.maketrans('：（）', ':()'))
     
-        # 标准化缩进
-        code = textwrap.dedent(code)  # 移除公共缩进
-        code = '\n'.join([line.rstrip() for line in code.split('\n')])  # 去除行尾空格
-        
-        # 自动补全return语句
-        if not re.search(r'return\s+[\w\[\]]+', code):
+        # 修复缺失冒号
+        code = re.sub(r'(def\s+\w+\(.*?\))\s*$', r'\1:', code)
+    
+        # 修复未闭合括号
+        open_brackets = {'(': ')', '[': ']', '{': '}'}
+        stack = []
+        for i, char in enumerate(code):
+            if char in open_brackets:
+                stack.append((char, i))
+            elif char in open_brackets.values():
+                if not stack or open_brackets[stack[-1][0]] != char:
+                    # 尝试自动修复
+                    code = code[:i] + open_brackets[stack[-1][0]] + code[i:]
+                else:
+                    stack.pop()
+    
+        # 确保return语句存在
+        if not re.search(r'return\s+\w+', code):
             code_lines = code.split('\n')
-            for i, line in enumerate(code_lines[::-1]):
-                if 'def select_next_node' in line:
+            for i, line in enumerate(reversed(code_lines)):
+                if line.strip().startswith('def '):
                     code_lines.insert(-i, '    return next_node')
                     break
             code = '\n'.join(code_lines)
     
         return code
 
-    def _fix_syntax_errors(self, code):
-        """尝试自动修复常见语法错误"""
-        # 修复冒号缺失
-        code = re.sub(r'(def\s+\w+\(.*?\))\s*$', r'\1:', code)
+    def _advanced_syntax_repair(self, code, error_msg):
+        """基于错误信息的智能修复"""
+        # 处理 'NoneType' has no attribute 'id' 类错误
+        if "'NoneType'" in error_msg:
+            code = re.sub(r'(\w+)\s*=\s*None\s*\n', r'\1 = 0\n', code)
     
-        # 修复中文标点
-        code = code.replace("：", ":").replace("（", "(").replace("）", ")")
+        # 处理未定义变量
+        undefined_var = re.search(r"name '(\w+)' is not defined", error_msg)
+        if undefined_var:
+            var_name = undefined_var.group(1)
+            code = f"{var_name} = None\n" + code
     
-        # 修复未闭合括号
-        try:
-            ast.parse(code)
-        except SyntaxError as e:
-            if 'unmatched' in str(e):
-                code += '\n)'  # 尝试补全括号
+        # 处理缩进错误
+        if "unexpected indent" in error_msg:
+            code = textwrap.dedent(code)
     
         return code
+
+    def _log_parse_error(self, error_info):
+        """结构化错误日志记录"""
+        log_entry = json.dumps({
+            "timestamp": datetime.now().isoformat(),
+            "type": "PARSE_ERROR",
+            "details": error_info
+        }, ensure_ascii=False)
+    
+        logging.error(log_entry)
+        with open("D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\log\\parse_llm_response_error.log", "a") as f:
+            f.write(log_entry + "\n")
+
+    def _normalize_code(self, code):
+        # 统一参数名称
+        replacements = {
+            r'\bcurrent_?node\b': 'current_node',
+            r'\bdest_?node\b': 'destination_node',
+            r'\bunvisited\b': 'unvisited_nodes',
+            r'\bdist_?matrix\b': 'distance_matrix'
+        }
+        for pattern, repl in replacements.items():
+            code = re.sub(pattern, repl, code, flags=re.IGNORECASE)
+    
+        # 确保必要库导入
+        if 'import numpy' not in code:
+            code = 'import numpy as np\n' + code
+        return code
+
         
     def load_evaluation_data(self):
         """加载评估数据集和最优解"""
@@ -293,12 +353,13 @@ class AEL_TSP:
                         ["python", "tsp_evaluator.py", temp_path, instance],
                         capture_output=True,
                         text=True,
-                        timeout=30,
-                        check=True  # 自动检查返回码
+                        timeout=60,
+                        check=True,
+                        env={**os.environ, "PYTHONPATH": r"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL"}
                     )
-                
+
                     # 解析结果
-                    file_path = r"D:\Paper\Algorithm Evolution Using Large Language Model\code\AEL\data\tsp_result.json"
+                    file_path = r"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data\\tsp_result.json"
 
                     try:
                         with open(file_path, 'r', encoding='utf-8') as f:
@@ -308,7 +369,7 @@ class AEL_TSP:
                             else:
                                 logging.info("The algorithm can not run")
                                 return result["status"]
-                    
+                        
                     except (subprocess.CalledProcessError, json.JSONDecodeError) as e:
                         error_info = {
                         "error_type": type(e).__name__,
@@ -325,6 +386,7 @@ class AEL_TSP:
             # 确保清理临时文件
             try:
                 os.remove(temp_path)
+                os.remove("D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data\\tsp_result.json")
                 logging.info(f"已清理临时文件：{temp_path}")
             except Exception as e:
                 logging.warning(f"临时文件清理失败：{str(e)}")
@@ -351,14 +413,17 @@ class AEL_TSP:
                     desc, code = self.parse_llm_response(response)
                     if desc and code:
                         # 保存新算法
-                        self.save_algorithm(desc, code)
                         fitness = self.evaluate_algorithm(code)
-                        new_population.append({
-                            "description": desc,
-                            "code": code,
-                            "fitness": fitness
-                        })
-                        logging.info("algorithm has crossovered successfully")
+                        if fitness:
+                            self.save_algorithm(desc, code)
+                            new_population.append({
+                                "description": desc,
+                                "code": code,
+                                "fitness": fitness
+                            })
+                            logging.info("Algorithm has crossovered successfully")
+                        else:
+                            logging.info("The new algorithm can not run")
                     else:
                         logging.info("The algorithm crossovered failed")
                         error_msg = f"crossover failed\n{response}\n{'='*50}"
@@ -374,7 +439,7 @@ class AEL_TSP:
                             prompt = self.create_mutation_prompt(ind)
                             
                             # 调用LLM生成变异算法
-                            response = llm(
+                            response = self.llm(
                                 prompt=prompt,
                                 max_tokens=4096,
                                 temperature=0.1
