@@ -65,7 +65,7 @@ class AEL_TSP:
     
     def save_algorithm(self, description, code):
         """保存算法到文件"""
-        filename = f"algorithm{self.next_algorithm_num:2d}.txt"
+        filename = f"algorithm{self.next_algorithm_num}.txt"
         filepath = os.path.join(self.data_path, filename)
         with open(filepath, "w",encoding='utf-8') as f:
             f.write(f"<start>{description}<end>\n{code}")
@@ -357,7 +357,6 @@ class AEL_TSP:
                         check=True,
                         env={**os.environ, "PYTHONPATH": r"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL"}
                     )
-
                     # 解析结果
                     file_path = r"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data\\tsp_result.json"
 
@@ -367,7 +366,7 @@ class AEL_TSP:
                             if result["status"]:
                                 return result["status"]
                             else:
-                                logging.info("The algorithm can not run")
+                                logging.info("The algorithm is not feasible")
                                 return result["status"]
                         
                     except (subprocess.CalledProcessError, json.JSONDecodeError) as e:
@@ -380,13 +379,14 @@ class AEL_TSP:
                         "stderr": process.stderr if 'process' in locals() else ''
                         }
                         logging.error(json.dumps(error_info, indent=2))
-                except:
+                except subprocess.CalledProcessError as e:
                     logging.info("evaluate algorithm failed")
+                    print(f"子进程错误详情：\n{e.stderr}")  # 打印具体错误信息
+                    return 0
         finally:
             # 确保清理临时文件
             try:
                 os.remove(temp_path)
-                os.remove("D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data\\tsp_result.json")
                 logging.info(f"已清理临时文件：{temp_path}")
             except Exception as e:
                 logging.warning(f"临时文件清理失败：{str(e)}")
@@ -434,7 +434,7 @@ class AEL_TSP:
                 for ind in list(new_population):  # 遍历新生成的个体
                     if np.random.rand() < self.mutation_prob:
                         try:
-                            logging.info("The algorithm is trying mutate")
+                            logging.info("The algorithm is trying to mutate")
                             # 生成变异提示
                             prompt = self.create_mutation_prompt(ind)
                             

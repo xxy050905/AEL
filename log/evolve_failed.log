@@ -10374,3 +10374,198 @@ def select_next_node(current_node, destination_node, unvisited_nodes, distance_m
         next_node = best_node
     return next_node
 ==================================================
+crossover failed
+ <start>平衡密度与最小距离的节点选择<end>
+         def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            # Calculate density scores for unvisited nodes
+            density_scores = []
+            for node in unvisited_nodes:
+                density = np.mean(distance_matrix[current_node][unvisited_nodes])
+                density_scores.append(density)
+
+            # Identify high-density regions
+            high_density_nodes = [node for node, score in zip(unvisited_nodes, density_scores) if score > np.mean(density_scores)]
+
+            # Perform BFS on high-density regions
+            visited = set()
+            queue = [high_density_nodes[0]]
+            visited.add(high_density_nodes[0])
+
+            while queue:
+                current = queue.pop(0)
+                for neighbor in unvisited_nodes:
+                    if distance_matrix[current][neighbor] < 0.5 and neighbor not in visited:
+                        visited.add(neighbor)
+                        queue.append(neighbor)
+
+            # Dynamic exploration strategy
+            if len(visited) < len(unvisited_nodes):
+                # Prioritize nodes with fewer connections
+                scores = []
+                for node in unvisited_nodes:
+                    score = np.mean(distance_matrix[node][visited])
+                    scores.append(score)
+                best_node = unvisited_nodes[0]
+                for i, node in enumerate(unvisited_nodes):
+                    if scores[i] < scores[best_node]:
+                        best_node = node
+            else:
+                # Prioritize nodes with more connections
+                scores = []
+                for node in unvisited_nodes:
+                    score = np.mean(distance_matrix[node][visited])
+                    scores.append(score)
+                best_node = unvisited_nodes[0]
+                for i, node in enumerate(unvisited_nodes):
+                    if scores[i] > scores[best_node]:
+                        best_node = node
+
+            return best_node
+
+</start> <end>
+</think>
+
+```
+<start>平衡密度与最小距离的优先选择<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    # Calculate density scores for unvisited nodes
+    density_scores = []
+    for node in unvisited_nodes:
+        density = np.mean(distance_matrix[current_node][unvisited_nodes])
+        density_scores.append(density)
+    
+    # Identify high-density regions
+    high_density_nodes = [node for node, score in zip(unvisited_nodes, density_scores) if score > np.mean(density_scores)]
+    
+    # Perform BFS on high-density regions
+    visited = set()
+    queue = [high_density_nodes[0]]
+    visited.add(high_density_nodes[0])
+    
+    while queue:
+        current = queue.pop(0)
+        for neighbor in unvisited_nodes:
+            if distance_matrix[current][neighbor] < 0.5 and neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+    
+    # Dynamic exploration strategy
+    if len(visited) < len(unvisited_nodes):
+        # Prioritize nodes with fewer connections
+        scores = []
+        for node in unvisited_nodes:
+            score = np.mean(distance_matrix[node][visited])
+            scores.append(score)
+        best_node = unvisited_nodes[0]
+        for i, node in enumerate(unvisited_nodes):
+            if scores[i] < scores[best_node]:
+                best_node = node
+    else:
+        # Prioritize nodes with more connections
+        scores = []
+        for node in unvisited_nodes:
+            score = np.mean(distance_matrix[node][visited])
+            scores.append(score)
+        best_node = unvisited_nodes[0]
+        for i, node in enumerate(unvisited_nodes):
+            if scores[i] > scores[best_node]:
+                best_node = node
+    
+    return best_node
+```
+==================================================
+crossover failed
+ import numpy as np
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+</start> <end>
+</think>
+
+```
+:start>优先选择密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+import numpy as np
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+```
+==================================================
+crossover failed
+ <start>...</start>
+</start>
+</think>
+
+```
+:start>优先选择距离近且密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+```
+:start>优先选择高密度且最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+```
+:start>优先选择密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # 计算每个未访问节点的密度
+    density = [sum(distance_matrix[current_node][n] for n in unvisited_nodes) for n in unvisited_nodes]
+    # 找到密度最高的节点
+    best_node = unvisited_nodes[ density.index(max(density)) ]
+    return best_node
+```
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+``<start>随机最近邻算法（90%概率选择最近节点，10%随机探索</end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+    return nearest
+<end>
+==================================================

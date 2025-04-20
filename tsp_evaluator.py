@@ -7,7 +7,6 @@ from collections import defaultdict
 sys.path.append(r"D:\Paper\Algorithm Evolution Using Large Language Model\code\AEL")
 from temp_algorithm_ import select_next_node
 
-
 def read_tsp_data(file_path):
     """解析TSPLIB格式数据，返回坐标列表 [[6]]"""
     cities = []
@@ -47,15 +46,17 @@ def solve_tsp():
     distance_matrix = calculate_distance_matrix(cities)
     n = len(cities)
     
-    # 初始化参数
+    # 修正1：确保起点和终点一致
     current_node = random.randint(0, n-1)
-    destination_node = 0
-    unvisited_nodes = list(range(1, n))
+    destination_node = current_node  # 终点设为起点
+    
+    # 修正2：正确初始化未访问节点
+    unvisited_nodes = [i for i in range(n) if i != current_node]
     random.shuffle(unvisited_nodes)
+    
     path = [current_node]
     total_distance = 0
     
-    # 构建路径
     while unvisited_nodes:
         next_node = select_next_node(
             current_node=current_node,
@@ -68,11 +69,11 @@ def solve_tsp():
         unvisited_nodes.remove(next_node)
         current_node = next_node
     
+    # 闭合路径
     total_distance += distance_matrix[path[-1]][destination_node]
     path.append(destination_node)
     
     feasible = is_feasible(path, n)
-    
     return path, total_distance, feasible
 
 if __name__ == "__main__":
