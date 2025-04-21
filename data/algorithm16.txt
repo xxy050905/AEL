@@ -1,0 +1,12 @@
+<start>优先选择高密度且最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])

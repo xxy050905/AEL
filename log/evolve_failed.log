@@ -10569,3 +10569,2441 @@ def select_next_node(current_node, destination_node, unvisited_nodes, distance_m
     return nearest
 <end>
 ==================================================
+crossover failed
+ <start>随机选择一个未访问的节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>贪心选择最近的节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>A*算法<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>深度优先搜索<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>广度优先搜索<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+</start> <end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+
+==================================================
+crossover failed
+ <start>动...<end>
+</start>
+</think>
+
+``<start>动态阶段选择算法（前期探索后期收敛）<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    total_nodes = len(distance_matrix)
+    visited_ratio = 1 - len(unvisited_nodes)/total_nodes 
+    if visited_ratio < 0.7:
+        best_node = None
+        max_score = -float('inf')
+        for node in unvisited_nodes:
+            valid_neighbors = sum(1 for n in unvisited_nodes 
+                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])
+            current_dist = distance_matrix[current_node][node]
+            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))
+            if score > max_score or (score == max_score and 
+ distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):
+                max_score = score
+                best_node = node
+        return best_node
+    else:
+        return min(unvisited_nodes, 
+                   key=lambda x: (distance_matrix[current_node][x] + 
+ 0.3 * distance_matrix[x][destination_node]))
+
+
+<end>
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+``<start>随机最近邻算法 + 动态阶段选择算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # 随机最近邻算法
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    # 动态阶段选择算法
+    total_nodes = len(distance_matrix)
+    visited_ratio = 1 - len(unvisited_nodes)/total_nodes 
+    if visited_ratio < 0.7:
+        best_node = None
+        max_score = -float('inf')
+        for node in unvisited_nodes:
+            valid_neighbors = sum(1 for n in unvisited_nodes 
+                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])
+            current_dist = distance_matrix[current_node][node]
+            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))
+            if score > max_score or (score == max_score and 
+ distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):
+                max_score = score
+                best_node = node
+        return best_node
+    else:
+        return min(unvisited_nodes, 
+                   key=lambda x: (distance_matrix[current_node][x] + 
+ 0.3 * distance_matrix[x][destination_node]))
+
+
+```
+==================================================
+crossover failed
+ <end>
+</start>
+<end>
+</start>
+</think>
+
+```
+:start>优先选择密度高的节点且最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <start>随机最近邻算法（90%概率选择最近节点，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+    return nearest
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>随机最近邻算法（90%概率选择最近节点，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+    return nearest
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+<start>节点密度优先算法（90%概率选择高密度区域，10%随机探索）
+<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density
+==================================================
+crossover failed
+ <start>...</start>
+</start>
+</think>
+
+```
+:start>优先选择距离近且密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+```
+:start>优先选择高密度且最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+<end>
+</think>
+
+```
+:start>优先选择高密度且最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <start>动...<end>
+</start>
+</think>
+
+``<start>动态阶段选择算法（前期探索后期收敛）<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    total_nodes = len(distance_matrix)
+    visited_ratio = 1 - len(unvisited_nodes)/total_nodes 
+    if visited_ratio < 0.7:
+        best_node = None
+        max_score = -float('inf')
+        for node in unvisited_nodes:
+            valid_neighbors = sum(1 for n in unvisited_nodes 
+                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])
+            current_dist = distance_matrix[current_node][node]
+            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))
+            if score > max_score or (score == max_score and 
+ distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):
+                max_score = score
+                best_node = node
+        return best_node
+    else:
+        return min(unvisited_nodes, 
+                   key=lambda x: (distance_matrix[current_node][x] + 
+ 0.3 * distance_matrix[x][destination_node]))
+
+
+<end>
+==================================================
+crossover failed
+ <start>...</start>
+</start>
+</think>
+
+```
+:start>优先选择距离近且密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+<end>
+</think>
+
+```
+:start>优先选择密度高的节点且距离最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+```
+:start>优先选择高密度且最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+<end>
+</think>
+
+```
+:start>优先选择高密度且最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+``<start>随机最近邻算法（90%概率选择最近节点，10%随机探索</end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+    return nearest
+<end>
+==================================================
+crossover failed
+ <start>随机选择下一个节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import random
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于距离优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>基于密度优先选择节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+
+==================================================
+crossover failed
+ <end>
+</start>
+<end>
+</think>
+
+```
+:start>优先选择高密度且最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <start>...</start>
+</start>
+</think>
+
+```
+:start>优先选择距离近且密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <start>动态阶段选择算法<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            # code
+</start>
+<end>
+</think>
+
+```
+:start>动态阶段选择算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    total_nodes = len(distance_matrix)
+    visited_ratio = 1 - len(unvisited_nodes)/total_nodes 
+    if visited_ratio < 0.7:
+        best_node = None
+        max_score = -float('inf')
+        for node in unvisited_nodes:
+            valid_neighbors = sum(1 for n in unvisited_nodes 
+                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])
+            current_dist = distance_matrix[current_node][node]
+            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))
+            if score > max_score or (score == max_score and 
+ distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):
+                max_score = score
+                best_node = node
+        return best_node
+    else:
+        return min(unvisited_nodes, 
+                   key=lambda x: (distance_matrix[current_node][x] + 
+ 0.3 * distance_matrix[x][destination_node]))
+
+</start>
+```
+==================================================
+crossover failed
+ <start>随机选择一个未访问的节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>贪心选择最近的节点<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>A*算法<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>深度优先搜索<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+         <start>广度优先搜索<end>
+        def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+            import numpy as np
+            return next_node
+</start> <end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>节点密度优先算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>A*算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>贪心选择最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>随机选择一个未访问的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>深度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+
+<start>广度优先搜索<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+```
+:start>优先选择距离近且密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return np.random.choice(unvisited_nodes, p=[1.0/len(unvisited_nodes)]*len(unvisited_nodes))
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+<end>
+</think>
+
+``<start>优先选择距离近且密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return np.random.choice(unvisited_nodes, p=[1/len(unvisited_nodes)]*len(unvisited_nodes))
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+``<start>随机最近邻算法 + 动态阶段选择算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # 随机最近邻算法
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    # 动态阶段选择算法
+    total_nodes = len(distance_matrix)
+    visited_ratio = 1 - len(unvisited_nodes)/total_nodes 
+    if visited_ratio < 0.7:
+        best_node = None
+        max_score = -float('inf')
+        for node in unvisited_nodes:
+            valid_neighbors = sum(1 for n in unvisited_nodes 
+                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])
+            current_dist = distance_matrix[current_node][node]
+            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))
+            if score > max_score or (score == max_score and 
+ distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):
+                max_score = score
+                best_node = node
+        return best_node
+    else:
+        return min(unvisited_nodes, 
+                   key=lambda x: (distance_matrix[current_node][x] + 
+ 0.3 * distance_matrix[x][destination_node]))
+```
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+```
+:start>优先选择密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+</think>
+
+```
+:start>优先选择高密度且最近的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    density_scores = []
+    for node in unvisited_nodes:
+        distances = distance_matrix[node]
+        radius = np.percentile(distances, 25)
+        density = sum(1 for d in distances if d <= radius)
+        density_scores.append(density)
+    max_density = max(density_scores)
+    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]
+    return min(candidates, key=lambda x: distance_matrix[current_node][x])
+</start>
+==================================================
+crossover failed
+ <end>
+</start>
+<start>反向路径感知算法（考虑前进和返回路径影响）<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    if len(unvisited_nodes) == 1:
+        return unvisited_nodes[0]
+    min_cost = float('inf')
+    best_node = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        forward_cost = distance_matrix[current_node][node]
+        return_cost = distance_matrix[node][destination_node]
+        remaining_cost = min(distance_matrix[node][n] for n in unvisited_nodes if n != node)
+        total = forward_cost + 0.4 * return_cost + 0.6 * remaining_cost
+        if total < min_cost:
+            min_cost = total
+            best_node = node
+    return best_node
+</start>
+</think>
+
+<start>我将创建一个基于两算法的混合选择策略。该策略在前期使用动态阶段选择算法（Algorithm 1）以实现探索，而在后期使用反向路径感知算法（Algorithm 2）以实现收敛。具体来说，策略会先根据Algorithm 1的动态阶段选择算法选择下一个节点，然后在后期使用Algorithm 2的反向路径感知算法进一步优化选择。该策略将结合两者的优点，以实现更高效和更优的路径选择。</end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    # 前期探索阶段：使用Algorithm 1的动态阶段选择算法
+    visited_ratio = 1 - len(unvisited_nodes)/len(distance_matrix)
+    if visited_ratio < 0.7:
+        best_node = None
+        max_score = -float('inf')
+        for node in unvisited_nodes:
+            valid_neighbors = sum(1 for n in unvisited_nodes 
+                               if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])
+            current_dist = distance_matrix[current_node][node]
+            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))
+            if score > max_score or (score == max_score and 
+ distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):
+                max_score = score
+                best_node = node
+        return best_node
+    # 后期收敛阶段：使用Algorithm 2的反向路径感知算法
+    else:
+        min_cost = float('inf')
+        best_node = unvisited_nodes[0]
+        for node in unvisited_nodes:
+            forward_cost = distance_matrix[current_node][node]
+            return_cost = distance_matrix[node][destination_node]
+            remaining_cost = min(distance_matrix[node][n] for n in unvisited_nodes if n != node)
+            total = forward_cost + 0.4 * return_cost + 0.6 * remaining_cost
+            if total < min_cost:
+                min_cost = total
+                best_node = node
+        return best_node
+==================================================
+crossover failed
+ <end>
+</start>
+<end>
+</think>
+
+``<start>优先选择距离近且密度高的节点<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    return next_node
+<end>
+==================================================

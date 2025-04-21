@@ -5,7 +5,18 @@ import json
 from collections import defaultdict
 
 sys.path.append(r"D:\Paper\Algorithm Evolution Using Large Language Model\code\AEL")
-from temp_algorithm_ import select_next_node
+# from temp_algorithm_ import select_next_node
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import random
+    if random.random() < 0.1 and len(unvisited_nodes) > 1:
+        return random.choice(unvisited_nodes)
+    min_dist = float('inf')
+    nearest = unvisited_nodes[0]
+    for node in unvisited_nodes:
+        if distance_matrix[current_node][node] < min_dist:
+            min_dist = distance_matrix[current_node][node]
+            nearest = node
+    return nearest
 
 def read_tsp_data(file_path):
     """解析TSPLIB格式数据，返回坐标列表 [[6]]"""

@@ -28,7 +28,7 @@ class AEL_TSP:
             main_gpu=1)
         print("Model initialized successfully.")
         # AEL参数
-        self.pop_size = 4
+        self.pop_size = 5
         self.generations = 10
         self.crossover_prob = 1.0
         self.mutation_prob = 0.2
@@ -39,6 +39,14 @@ class AEL_TSP:
         self.next_algorithm_num = self.get_next_algorithm_number()
         #获取评估数据
         self.eval_instances, self.optimal_solutions = self.load_evaluation_data()
+        #成功率统计
+        self.success_stats = {
+            'initialization': {'success': 0, 'fail': 0},
+            'crossover': {'success': 0, 'fail': 0},
+            'mutation': {'success': 0, 'fail': 0},
+            'total_attempts': 0,
+            'generation_stats': []
+        }
     def create_initial_prompt(self):
         return """
         # 任务：生成TSP算法
@@ -315,17 +323,83 @@ class AEL_TSP:
             desc, code = self.parse_llm_response(response)
             if desc and code:
                 fitness = self.evaluate_algorithm(code)
-                population.append({
-                    "description": desc,
-                    "code": code,
-                    "fitness": fitness
-                })
-                self.save_algorithm(desc, code)  # 保存新生成的算法
+                if fitness:
+                    population.append({
+                        "description": desc,
+                        "code": code,
+                        "fitness": fitness
+                    })
+                    self.success_stats['initialization']['success'] += 1
+                    self.save_algorithm(desc, code)  # 保存新生成的算法
+                else:
+                    self.success_stats['initialization']['fail'] += 1
             if len(population) >= self.pop_size:
                 logging.info("The supplementary algorithm has been generated successfully")
                 break
         return population[:self.pop_size]
+    def visualize_success_rate(self, save_path=None):
+        """可视化成功率并保存为图片"""
+        import matplotlib.pyplot as plt
+        from matplotlib.ticker import MaxNLocator
+        
+        plt.figure(figsize=(15, 10))
+        
+        # 成功率趋势图
+        plt.subplot(2, 2, 1)
+        generations = [x['generation'] for x in self.success_stats['generation_stats']]
+        success_rates = [x['success_rate'] for x in self.success_stats['generation_stats']]
+        plt.plot(generations, success_rates, marker='o')
+        plt.title('Success Rate Trend per Generation')
+        plt.xlabel('Generation')
+        plt.ylabel('Success Rate (%)')
+        plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{x:.0f}%'))
+        plt.grid(True)
 
+        # 操作类型分布
+        plt.subplot(2, 2, 2)
+        labels = ['Initialization', 'Crossover', 'Mutation']
+        success = [
+            self.success_stats['initialization']['success'],
+            self.success_stats['crossover']['success'],
+            self.success_stats['mutation']['success']
+        ]
+        fails = [
+            self.success_stats['initialization']['fail'],
+            self.success_stats['crossover']['fail'],
+            self.success_stats['mutation']['fail']
+        ]
+        
+        x = np.arange(len(labels))
+        width = 0.35
+        plt.bar(x - width/2, success, width, label='Success')
+        plt.bar(x + width/2, fails, width, label='Failure')
+        plt.title('Success/Failure by Operation Type')
+        plt.xticks(x, labels)
+        plt.legend()
+        plt.gca().yaxis.set_major_locator(MaxNLocator(integer=True))
+
+        # 错误类型分布
+        plt.subplot(2, 2, 3)
+        error_types = {k:v for k,v in self.success_stats.items() if k in ['missing_description', 'invalid_code', 'other_errors']}
+        plt.pie(error_types.values(), labels=error_types.keys(), autopct='%1.1f%%')
+        plt.title('Error Type Distribution')
+
+        # 总体统计
+        plt.subplot(2, 2, 4)
+        total_success = sum([v['success'] for k,v in self.success_stats.items() if isinstance(v, dict) and 'success' in v])
+        total_fail = sum([v['fail'] for k,v in self.success_stats.items() if isinstance(v, dict) and 'fail' in v])
+        plt.bar(['Success', 'Failure'], [total_success, total_fail], color=['green', 'red'])
+        plt.title(f'Overall Success Rate: {total_success/(total_success+total_fail)*100:.1f}%')
+        plt.gca().yaxis.set_major_locator(MaxNLocator(integer=True))
+
+        plt.tight_layout()
+        
+        if save_path:
+            plt.savefig(os.path.join(save_path, 'success_rate_analysis.png'), bbox_inches='tight')
+            logging.info(f"Saved visualization to {save_path}")
+        else:
+            plt.show()
+        plt.close()
     def evaluate_algorithm(self, code):
         # 保存算法到临时文件（使用绝对路径）
         temp_dir = "D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL"
@@ -392,78 +466,150 @@ class AEL_TSP:
                 logging.warning(f"临时文件清理失败：{str(e)}")
 
     def evolve(self):
+        # 初始化种群
         population = self.initialize_population()
+    
+        # 代数循环统计
         for gen in range(self.generations):
             new_population = []
-            
+            logging.info(f"=== 正在进化第 {gen+1}/{self.generations} 代 ===")
+        
+            # 新增：代数级统计初始化
+            gen_success = 0
+            gen_attempts = 0
+        
             for _ in range(self.pop_size):
-                # 选择
+                # 选择父代（原有代码）
                 parents = np.random.choice(population, self.parents_num, replace=False)
-                
-                # 交叉
+            
+                # --- 交叉操作 ---
                 if np.random.rand() < self.crossover_prob:
-                    logging.info("The algorithm is crossovering")
-                    prompt = self.create_crossover_prompt(parents)
-                    response = self.llm(
-                        prompt=prompt,
-                        max_tokens=4096,
-                        temperature=0.1
-                    )['choices'][0]['text']
-                    logging.info(response)
-                    desc, code = self.parse_llm_response(response)
-                    if desc and code:
-                        # 保存新算法
-                        fitness = self.evaluate_algorithm(code)
-                        if fitness:
-                            self.save_algorithm(desc, code)
-                            new_population.append({
-                                "description": desc,
-                                "code": code,
-                                "fitness": fitness
-                            })
-                            logging.info("Algorithm has crossovered successfully")
-                        else:
-                            logging.info("The new algorithm can not run")
-                    else:
-                        logging.info("The algorithm crossovered failed")
-                        error_msg = f"crossover failed\n{response}\n{'='*50}"
-                        with open("D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\log\\evolve_failed.log", "a") as f:
-                            f.write(error_msg + "\n")
-                
-                # 变异（示例）
-                for ind in list(new_population):  # 遍历新生成的个体
-                    if np.random.rand() < self.mutation_prob:
-                        try:
-                            logging.info("The algorithm is trying to mutate")
-                            # 生成变异提示
-                            prompt = self.create_mutation_prompt(ind)
-                            
-                            # 调用LLM生成变异算法
-                            response = self.llm(
-                                prompt=prompt,
-                                max_tokens=4096,
-                                temperature=0.1
-                            )['choices'][0]['text']
-                            
-                            # 解析响应
-                            desc, code = self.parse_llm_response(response)
-                            if desc and code:
-                                # 保存新算法
+                    logging.info("执行交叉操作...")
+                    try:
+                        # 生成提示并调用LLM（原有代码）
+                        prompt = self.create_crossover_prompt(parents)
+                        response = self.llm(
+                            prompt=prompt,
+                            max_tokens=4096,
+                            temperature=0.1
+                        )['choices'][0]['text']
+                    
+                        # 解析响应
+                        desc, code = self.parse_llm_response(response)
+                    
+                        #交叉操作统计
+                        if desc and code:
+                            # 评估适应度
+                            fitness = self.evaluate_algorithm(code)
+                            if fitness:
+                                # 保存算法）
                                 self.save_algorithm(desc, code)
-                                
-                                # 评估并加入种群
-                                fitness = self.evaluate_algorithm(code)
                                 new_population.append({
                                     "description": desc,
                                     "code": code,
                                     "fitness": fitness
                                 })
-                                logging.info("The algorithm has mutated successfully")
+                            
+                                # 统计成功
+                                self.success_stats['crossover']['success'] += 1
+                                gen_success += 1
+                                logging.info("交叉成功！生成新算法")
+                            else:
+                                # 统计无效算法
+                                self.success_stats['crossover']['fail'] += 1
+                                logging.warning("交叉生成无效算法")
+                        else:
+                            # 统计解析失败
+                            self.success_stats['crossover']['fail'] += 1
+                            logging.error("交叉响应解析失败")
+                    
+                        # 统计总尝试次数
+                        gen_attempts += 1
+                        self.success_stats['total_attempts'] += 1
+                
+                    except Exception as e:
+                        # 异常处理统计
+                        self.success_stats['crossover']['fail'] += 1
+                        logging.error(f"交叉操作异常: {str(e)}")
+                        traceback.print_exc()
+
+            # --- 变异操作 ---
+
+                for ind in list(new_population):  # 遍历新生成的个体
+                    if np.random.rand() < self.mutation_prob:
+                        logging.info("执行变异操作...")
+                        try:
+                            # 生成提示并调用LLM（原有代码）
+                            prompt = self.create_mutation_prompt(ind)
+                            response = self.llm(
+                                prompt=prompt,
+                                max_tokens=4096,
+                                temperature=0.1
+                            )['choices'][0]['text']
+                        
+                            # 解析响应（原有代码）
+                            desc, code = self.parse_llm_response(response)
+                        
+                            # 新增：变异操作统计
+                            if desc and code:
+                                # 评估适应度（原有代码）
+                                fitness = self.evaluate_algorithm(code)
+                                if fitness:
+                                    # 保存算法（原有代码）
+                                    self.save_algorithm(desc, code)
+                                    new_population.append({
+                                        "description": desc,
+                                        "code": code,
+                                        "fitness": fitness
+                                    })
+                                
+                                    # 统计成功
+                                    self.success_stats['mutation']['success'] += 1
+                                    gen_success += 1
+                                    logging.info("变异成功！生成新算法")
+                                else:
+                                    # 统计无效算法
+                                    self.success_stats['mutation']['fail'] += 1
+                                    logging.warning("变异生成无效算法")
+                            else:
+                                # 统计解析失败
+                                self.success_stats['mutation']['fail'] += 1
+                                logging.error("变异响应解析失败")
+                        
+                            # 统计总尝试次数
+                            gen_attempts += 1
+                            self.success_stats['total_attempts'] += 1
+                    
                         except Exception as e:
-                            print(f"Mutation error: {str(e)}")
-            # 种群管理
-            population = sorted(population + new_population, key=lambda x: x['fitness'])[:self.pop_size]
-        logging.info("evolve func is done")
+                            # 新增：异常处理统计
+                            self.success_stats['mutation']['fail'] += 1
+                            logging.error(f"变异操作异常: {str(e)}")
+                            traceback.print_exc()
+
+                population = sorted(population + new_population, key=lambda x: x['fitness'])[:self.pop_size]
+        
+            # 新增：记录每代统计（修改部分开始）
+            if gen_attempts > 0:
+                success_rate = (gen_success / gen_attempts) * 100
+            else:
+                success_rate = 0.0
+            
+            self.success_stats['generation_stats'].append({
+                'generation': gen+1,
+                'attempts': gen_attempts,
+                'success': gen_success,
+                'success_rate': success_rate
+            })
+            logging.info(f"第 {gen+1} 代统计 - 尝试次数: {gen_attempts} | 成功率: {success_rate:.1f}%")
+    
+        # 新增：进化完成后自动生成可视化（修改部分开始）
+        logging.info("正在生成成功率分析图表...")
+        self.visualize_success_rate(save_path=self.data_path)
+    
+        # 返回最优个体（原有代码）
+        best_individual = max(population, key=lambda x: x['fitness'])
+        logging.info("进化完成！")
+        return best_individual
 
 # 使用示例
 if __name__ == "__main__":
@@ -472,3 +618,4 @@ if __name__ == "__main__":
     
     ael = AEL_TSP(model_path, data_path)
     best_algorithm = ael.evolve()
+    ael.visualize_success_rate(save_path=data_path)
