@@ -1,4 +1,14 @@
 <start>优先选择距离近且密度高的节点<end>
 def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
     import numpy as np
-    return unvisited_nodes[0]
+    if len(unvisited_nodes) == 0:
+        return None
+    distances = np.array([distance_matrix[current_node][node] for node in unvisited_nodes])
+    density = np.zeros(len(unvisited_nodes))
+    for i, node in enumerate(unvisited_nodes):
+        neighbor_dists = [distance_matrix[node][n] for n in unvisited_nodes if n != node]
+        density[i] = 1/(np.mean(neighbor_dists) + 1e-9) if neighbor_dists else 0
+    norm_dist = (distances - np.min(distances))/(np.max(distances) - np.min(distances) + 1e-9)
+    norm_density = (density - np.min(density))/(np.max(density) - np.min(density) + 1e-9)
+    scores = 0.7 * (1 - norm_dist) + 0.3 * norm_density
+    return unvisited_nodes[np.argmax(scores)]

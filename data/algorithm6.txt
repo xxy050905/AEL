@@ -1,4 +1,4 @@
-<start>动态平衡选择算法<end>
+<start>动态平衡选择算法 <end>
 def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
     best_score = -float('inf')
     best_node = unvisited_nodes[0]

@@ -7,7 +7,7 @@
   {
     "id": 2,
     "description": "最大最小距离平衡算法（平衡当前距离与后续最小距离）",
-    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    best_score = -float('inf')\n    best_node = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        current_dist = distance_matrix[current_node][node]\n        min_future_dist = min([distance_matrix[node][n] for n in unvisited_nodes if n != node])\n        score = 0.7 * (1/current_dist) + 0.3 * (1/min_future_dist)\n        if score > best_score:\n            best_score = score\n            best_node = node\n    return best_node"
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    best_score = -float('inf')\n    best_node = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        current_dist = distance_matrix[current_node][node]\n        if current_dist <= 1e-10:\n            current_dist = 1e-10 \n        future_distances = [distance_matrix[node][n] for n in unvisited_nodes if n != node]\n        min_future_dist = min(future_distances) if future_distances else float('inf')\n        if min_future_dist <= 1e-10:\n            min_future_dist = 1e-10  \n        score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)\n        if score > best_score:\n            best_score = score\n            best_node = node\n    return best_node"
   },
   {
     "id": 3,
@@ -17,11 +17,116 @@
   {
     "id": 4,
     "description": "动态阶段选择算法（前期探索后期收敛）",
-    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    total_nodes = len(distance_matrix)\n    visited_ratio = 1 - len(unvisited_nodes)/total_nodes\n    if visited_ratio < 0.7:\n        return max(unvisited_nodes,key=lambda x:len([n for n in unvisited_nodes if distance_matrix[x][n]<distance_matrix[current_node][x]))\n    else:\n        return min(unvisited_nodes, key=lambda x: distance_matrix[current_node][x])"
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    total_nodes = len(distance_matrix)\n    visited_ratio = 1 - len(unvisited_nodes)/total_nodes \n    if visited_ratio < 0.7:\n        best_node = None\n        max_score = -float('inf')\n        for node in unvisited_nodes:\n            valid_neighbors = sum(1 for n in unvisited_nodes \n                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])\n            current_dist = distance_matrix[current_node][node]\n            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))\n            if score > max_score or (score == max_score and \n                                    distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):\n                max_score = score\n                best_node = node\n        return best_node\n    else:\n        return min(unvisited_nodes, \n                   key=lambda x: (distance_matrix[current_node][x] + \n                                  0.3 * distance_matrix[x][destination_node]))"
   },
   {
     "id": 5,
     "description": "反向路径感知算法（考虑前进和返回路径影响）",
     "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    if len(unvisited_nodes) == 1:\n        return unvisited_nodes[0]\n    min_cost = float('inf')\n    best_node = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        forward_cost = distance_matrix[current_node][node]\n        return_cost = distance_matrix[node][destination_node]\n        remaining_cost = min(distance_matrix[node][n] for n in unvisited_nodes if n != node)\n        total = forward_cost + 0.4*return_cost + 0.6*remaining_cost\n        if total < min_cost:\n            min_cost = total\n            best_node = node\n    return best_node"
+  },
+  {
+    "id": 6,
+    "description": "动态平衡选择算法",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    best_score = -float('inf')\n    best_node = unvisited_nodes[0]\n    visited_ratio = 1 - len(unvisited_nodes)/len(distance_matrix)\n    if visited_ratio < 0.7:\n        best_score = -float('inf')\n        best_node = unvisited_nodes[0]\n        for node in unvisited_nodes:\n            current_dist = distance_matrix[current_node][node]\n            if current_dist <= 1e-10:\n                current_dist = 1e-10\n            future_distances = [distance_matrix[node][n] for n in unvisited_nodes if n != node]\n            min_future_dist = min(future_distances) if future_distances else float('inf')\n            if min_future_dist <= 1e-10:\n                min_future_dist = 1e-10\n            score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)\n            if score > best_score:\n                best_score = score\n                best_node = node\n    else:\n        return min(unvisited_nodes,\n                   key=lambda x: (distance_matrix[current_node][x] +\n 0.3 * distance_matrix[x][destination_node]))\n    return best_node"
+  },
+  {
+    "id": 7,
+    "description": "基于平衡最近邻和密度分布的随机算法",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import random\n    import numpy as np\n    if random.random() < 0.1 and len(unvisited_nodes) > 1:\n        return random.choice(unvisited_nodes)\n    min_dist = float('inf')\n    nearest = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        if distance_matrix[current_node][node] < min_dist:\n            min_dist = distance_matrix[current_node][node]\n            nearest = node\n    return nearest"
+  },
+  {
+    "id": 8,
+    "description": "动态平衡阶段选择算法",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    total_nodes = len(distance_matrix)\n    visited_ratio = 1 - len(unvisited_nodes)/total_nodes\n    if visited_ratio < 0.7:\n        best_node = None\n        max_score = -float('inf')\n        for node in unvisited_nodes:\n            valid_neighbors = sum(1 for n in unvisited_nodes\n                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])\n            current_dist = distance_matrix[current_node][node]\n            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))\n            if score > max_score or (score == max_score and\n distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):\n                max_score = score\n                best_node = node\n        return best_node\n    else:\n        return min(unvisited_nodes,\n                   key=lambda x: (distance_matrix[current_node][x] +\n 0.3 * distance_matrix[x][destination_node]))"
+  },
+  {
+    "id": 9,
+    "description": "动态平衡选择节点",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    best_score = -float('inf')\n    best_node = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        current_dist = distance_matrix[current_node][node]\n        if current_dist <= 1e-10:\n            current_dist = 1e-10\n        future_distances = [distance_matrix[node][n] for n in unvisited_nodes if n != node]\n        min_future_dist = min(future_distances) if future_distances else float('inf')\n        if min_future_dist <= 1e-10:\n            min_future_dist = 1e-10\n        score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)\n        if score > best_score:\n            best_score = score\n            best_node = node\n    return best_node"
+  },
+  {
+    "id": 10,
+    "description": "平衡探索与收敛算法",
+    "code": "import numpy as np\ndef select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    total_nodes = len(distance_matrix)\n    visited_ratio = 1 - len(unvisited_nodes)/total_nodes\n    if visited_ratio < 0.7:\n        best_score = -float('inf')\n        best_node = unvisited_nodes[0]\n        for node in unvisited_nodes:\n            valid_neighbors = sum(1 for n in unvisited_nodes\n                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])\n            current_dist = distance_matrix[current_node][node]\n            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))\n            if score > best_score or (score == best_score and distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):\n                best_score = score\n                best_node = node\n        return best_node\n    else:\n        return min(unvisited_nodes,\n                   key=lambda x: (distance_matrix[current_node][x] +\n 0.3 * distance_matrix[x][destination_node]))"
+  },
+  {
+    "id": 11,
+    "description": "优先选择距离近且密度高的节点",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    if len(unvisited_nodes) == 0:\n        return None\n    distances = np.array([distance_matrix[current_node][node] for node in unvisited_nodes])\n    density = np.zeros(len(unvisited_nodes))\n    for i, node in enumerate(unvisited_nodes):\n        neighbor_dists = [distance_matrix[node][n] for n in unvisited_nodes if n != node]\n        density[i] = 1/(np.mean(neighbor_dists) + 1e-9) if neighbor_dists else 0\n    norm_dist = (distances - np.min(distances))/(np.max(distances) - np.min(distances) + 1e-9)\n    norm_density = (density - np.min(density))/(np.max(density) - np.min(density) + 1e-9)\n    scores = 0.7 * (1 - norm_dist) + 0.3 * norm_density\n    return unvisited_nodes[np.argmax(scores)]"
+  },
+  {
+    "id": 12,
+    "description": "反向路径感知算法与动态阶段选择算法结合的混合选择算法",
+    "code": "import numpy as np\ndef select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    total_nodes = len(distance_matrix)\n    visited_ratio = 1 - len(unvisited_nodes)/total_nodes\n    if visited_ratio < 0.7:\n        best_node = None\n        max_score = -float('inf')\n        for node in unvisited_nodes:\n            valid_neighbors = sum(1 for n in unvisited_nodes\n                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])\n            current_dist = distance_matrix[current_node][node]\n            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))\n            if score > max_score or (score == max_score and\n distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):\n                max_score = score\n                best_node = node\n        return best_node\n    else:\n        return min(unvisited_nodes,\n                   key=lambda x: (distance_matrix[current_node][x] +\n 0.3 * distance_matrix[x][destination_node]))"
+  },
+  {
+    "id": 13,
+    "description": "优先选择高密度且最近的节点",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    density_scores = []\n    for node in unvisited_nodes:\n        distances = distance_matrix[node]\n        radius = np.percentile(distances, 25)\n        density = sum(1 for d in distances if d <= radius)\n        density_scores.append(density)\n    max_density = max(density_scores)\n    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]\n    return min(candidates, key=lambda x: distance_matrix[current_node][x])"
+  },
+  {
+    "id": 14,
+    "description": "我选择下一个节点的算法是基于平衡当前距离与后续最小距离的算法",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    best_score = -float('inf')\n    best_node = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        current_dist = distance_matrix[current_node][node]\n        if current_dist <= 1e-10:\n            current_dist = 1e-10\n        future_distances = [distance_matrix[node][n] for n in unvisited_nodes if n != node]\n        min_future_dist = min(future_distances) if future_distances else float('inf')\n        if min_future_dist <= 1e-10:\n            min_future_dist = 1e-10\n        score = 0.7 * (1 / current_dist) + 0.3 * (1 / min_future_dist)\n        if score > best_score:\n            best_score = score\n            best_node = node\n    return best_node"
+  },
+  {
+    "id": 15,
+    "description": "基于密度优先和路径感知的混合算法",
+    "code": "import numpy as np\ndef select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    if len(unvisited_nodes) == 1:\n        return unvisited_nodes[0]\n    min_cost = float('inf')\n    best_node = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        forward_cost = distance_matrix[current_node][node]\n        return_cost = distance_matrix[node][destination_node]\n        remaining_cost = min(distance_matrix[node][n] for n in unvisited_nodes if n != node)\n        total = forward_cost + 0.4*return_cost + 0.6*remaining_cost\n        if total < min_cost:\n            min_cost = total\n            best_node = node\n    return best_node"
+  },
+  {
+    "id": 16,
+    "description": "优先选择高密度且最近的节点",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    density_scores = []\n    for node in unvisited_nodes:\n        distances = distance_matrix[node]\n        radius = np.percentile(distances, 25)\n        density = sum(1 for d in distances if d <= radius)\n        density_scores.append(density)\n    max_density = max(density_scores)\n    candidates = [n for n, s in zip(unvisited_nodes, density_scores) if s == max_density]\n    return min(candidates, key=lambda x: distance_matrix[current_node][x])"
+  },
+  {
+    "id": 17,
+    "description": "基于反向路径感知算法的随机最近邻改进算法",
+    "code": "import numpy as np\ndef select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import random\n    if random.random() < 0.1 and len(unvisited_nodes) > 1:\n        return random.choice(unvisited_nodes)\n    min_dist = float('inf')\n    nearest = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        if distance_matrix[current_node][node] < min_dist:\n            min_dist = distance_matrix[current_node][node]\n            nearest = node\n    return nearest"
+  },
+  {
+    "id": 18,
+    "description": "优先选择距离近且密度高的节点",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    return unvisited_nodes[0]"
+  },
+  {
+    "id": 19,
+    "description": "优先选择距离近且密度高的节点",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    return unvisited_nodes[0]"
+  },
+  {
+    "id": 20,
+    "description": "随机最近邻算法与平衡探索与收敛算法的结合",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import random\n    import numpy as np\n    if random.random() < 0.1 and len(unvisited_nodes) > 1:\n        return random.choice(unvisited_nodes)\n    visited_ratio = 1 - len(unvisited_nodes)/len(distance_matrix)\n    if visited_ratio < 0.7:\n        best_score = -float('inf')\n        best_node = unvisited_nodes[0]\n        for node in unvisited_nodes:\n            valid_neighbors = sum(1 for n in unvisited_nodes\n                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])\n            current_dist = distance_matrix[current_node][node]\n            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))\n            if score > best_score or (score == best_score and distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):\n                best_score = score\n                best_node = node\n        return best_node\n    else:\n        return min(unvisited_nodes,\n                   key=lambda x: (distance_matrix[current_node][x] +\n                       0.3 * distance_matrix[x][destination_node]))"
+  },
+  {
+    "id": 21,
+    "description": "随机最近邻算法与反向路径感知算法结合的混合选择算法",
+    "code": "import numpy as np\ndef select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    visited_ratio = 1 - len(unvisited_nodes)/len(distance_matrix)\n    if visited_ratio < 0.7:\n        best_node = None\n        max_score = -float('inf')\n        for node in unvisited_nodes:\n            valid_neighbors = sum(1 for n in unvisited_nodes\n                                 if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])\n            current_dist = distance_matrix[current_node][node]\n            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))\n            if score > max_score or (score == max_score and\n distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):\n                max_score = score\n                best_node = node\n        return best_node\n    else:\n        return min(unvisited_nodes,\n                   key=lambda x: (distance_matrix[current_node][x] +\n 0.3 * distance_matrix[x][destination_node]))"
+  },
+  {
+    "id": 22,
+    "description": "基于平衡探索与收敛算法的混合选择算法",
+    "code": "import numpy as np\ndef select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    total_nodes = len(distance_matrix)\n    visited_ratio = 1 - len(unvisited_nodes)/total_nodes\n    if visited_ratio < 0.7:\n        best_node = None\n        max_score = -float('inf')\n        for node in unvisited_nodes:\n            valid_neighbors = sum(1 for n in unvisited_nodes\n                             if n != node and distance_matrix[node][n] < distance_matrix[current_node][node])\n            current_dist = distance_matrix[current_node][node]\n            score = valid_neighbors * 100 + (1 / current_dist if current_dist != 0 else float('inf'))\n            if score > max_score or (score == max_score and distance_matrix[node][destination_node] < distance_matrix[best_node][destination_node]):\n                max_score = score\n                best_node = node\n        return best_node\n    else:\n        return min(unvisited_nodes,\n                   key=lambda x: (distance_matrix[current_node][x] +\n                       0.3 * distance_matrix[x][destination_node]))"
+  },
+  {
+    "id": 23,
+    "description": "优先选择最近且密度高的节点",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    distances = distance_matrix[current_node]\n    density = np.zeros_like(distances)\n    for node in unvisited_nodes:\n        neighbor_dists = [distance_matrix[node][n] for n in unvisited_nodes if n != node]\n        density[node] = 1/(np.mean(neighbor_dists) + 1e-9)\n    norm_dist = (distances - np.min(distances)) / (np.max(distances) - np.min(distances) + 1e-9)\n    norm_density = (density - np.min(density)) / (np.max(density) - np.min(density) + 1e-9)\n    scores = 0.7 * (1 - norm_dist) + 0.3 * norm_density  # 距离越近、密度越高得分越高\n    best_node = unvisited_nodes[np.argmax([scores[node] for node in unvisited_nodes])]\n    return best_node"
+  },
+  {
+    "id": 24,
+    "description": "优先选择距离近且密度高的节点",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    min_dist = float('inf')\n    nearest = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        if distance_matrix[current_node][node] < min_dist:\n            min_dist = distance_matrix[current_node][node]\n            nearest = node\n    return nearest"
+  },
+  {
+    "id": 25,
+    "description": "优先选择最近且密度高的节点",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    min_dist = float('inf')\n    nearest = unvisited_nodes[0]\n    for node in unvisited_nodes:\n        dist = distance_matrix[current_node][node]\n        if dist < min_dist:\n            min_dist = dist\n            nearest = node\n    return nearest"
+  },
+  {
+    "id": 26,
+    "description": "基于反向路径感知算法与动态阶段选择算法结合的混合选择算法",
+    "code": "def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):\n    import numpy as np\n    if len(unvisited_nodes) > 1:\n        best_node = unvisited_nodes[0]\n        min_dist = distance_matrix[current_node][best_node]\n        for node in unvisited_nodes:\n            if distance_matrix[current_node][node] < min_dist:\n                min_dist = distance_matrix[current_node][node]\n                best_node = node\n        return best_node\n    else:\n        return random.choice(unvisited_nodes)"
   }
 ]

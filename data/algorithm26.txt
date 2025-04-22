@@ -1,0 +1,13 @@
+<start>基于反向路径感知算法与动态阶段选择算法结合的混合选择算法<end>
+def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
+    import numpy as np
+    if len(unvisited_nodes) > 1:
+        best_node = unvisited_nodes[0]
+        min_dist = distance_matrix[current_node][best_node]
+        for node in unvisited_nodes:
+            if distance_matrix[current_node][node] < min_dist:
+                min_dist = distance_matrix[current_node][node]
+                best_node = node
+        return best_node
+    else:
+        return random.choice(unvisited_nodes)

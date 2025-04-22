@@ -1,56 +1,26 @@
 import json
 import os
-import re
-import glob
 
-def txt_to_json(data_path, output_file="algorithms.json"):
-    """
-    将algorithm*.txt文件转换为JSON格式
-    参数说明：
-    - data_path: 原始txt文件存储路径
-    - output_file: 输出JSON文件名
-    """
-    algorithms = []
-    
-    # 匹配文件模式
-    file_pattern = os.path.join(data_path, "algorithm*.txt")
-    
-    # 解析每个txt文件
-    for txt_file in glob.glob(file_pattern):
-        try:
-            with open(txt_file, "r", encoding="utf-8") as f:
-                content = f.read()
-            
-            # 使用改进的正则表达式解析
-            match = re.search(
-                r"<start>(.*?)<end>\s*(def select_next_node.*?)(?=\n<|\Z)",
-                content, 
-                re.DOTALL | re.IGNORECASE
-            )
-            
-            if match:
-                # 提取编号
-                file_id = int(re.search(r"algorithm(\d+)", txt_file).group(1))
-                
-                algorithms.append({
-                    "id": file_id,
-                    "description": match.group(1).strip(),
-                    "code": match.group(2).strip()
-                })
-                
-        except Exception as e:
-            print(f"转换失败 {os.path.basename(txt_file)}: {str(e)}")
-    
-    # 按原始编号排序
-    algorithms.sort(key=lambda x: x["id"])
-    
-    # 保存为JSON
-    output_path = os.path.join(data_path, output_file)
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(algorithms, f, indent=2, ensure_ascii=False)
-    
-    print(f"成功转换 {len(algorithms)} 个算法到 {output_path}")
+algorithms = []
 
-if __name__ == "__main__":
-    data_path = "D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data"
-    txt_to_json(data_path)
+for i in range(1, 27):
+    filename = f"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data\\algorithm{i}.txt"
+    if not os.path.exists(filename):
+        continue
+        
+    with open(filename, 'r', encoding='utf-8') as f:
+        content = f.read().strip()
+        
+        desc_start = content.find('<start>') + len('<start>')
+        desc_end = content.find('<end>')
+        description = content[desc_start:desc_end].strip()
+        code = content[desc_end+len('<end>'):].strip()
+
+        algorithms.append({
+            "id": i,
+            "description": description,
+            "code": code
+        })
+
+with open('D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data\\algorithms.json', 'w', encoding='utf-8') as f:
+    json.dump(algorithms, f, ensure_ascii=False, indent=2)

@@ -11,6 +11,8 @@ import ast
 import textwrap
 from datetime import datetime
 import traceback
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 logging.basicConfig(level=logging.INFO)
@@ -28,7 +30,7 @@ class AEL_TSP:
             main_gpu=1)
         print("Model initialized successfully.")
         # AEL参数
-        self.pop_size = 5
+        self.pop_size = 10
         self.generations = 10
         self.crossover_prob = 1.0
         self.mutation_prob = 0.2
@@ -310,38 +312,16 @@ class AEL_TSP:
         population = []
         files = glob.glob(os.path.join(self.data_path, "algorithm*.txt"))
         # 优先加载已有算法
-        for f in files[:5]:
+        for f in files[:self.pop_size]:
             algorithm = self.load_algorithm(f)
             if algorithm:
                 algorithm["fitness"] = self.evaluate_algorithm(algorithm["code"])
                 population.append(algorithm)
         logging.info("The existed algorithm has loaded successfully")
         
-    # 如果种群不足，通过LLM生成补充
-        while len(population) < self.pop_size:
-            response = self.llm(prompt=self.create_initial_prompt())['choices'][0]['text']
-            desc, code = self.parse_llm_response(response)
-            if desc and code:
-                fitness = self.evaluate_algorithm(code)
-                if fitness:
-                    population.append({
-                        "description": desc,
-                        "code": code,
-                        "fitness": fitness
-                    })
-                    self.success_stats['initialization']['success'] += 1
-                    self.save_algorithm(desc, code)  # 保存新生成的算法
-                else:
-                    self.success_stats['initialization']['fail'] += 1
-            if len(population) >= self.pop_size:
-                logging.info("The supplementary algorithm has been generated successfully")
-                break
         return population[:self.pop_size]
     def visualize_success_rate(self, save_path=None):
         """可视化成功率并保存为图片"""
-        import matplotlib.pyplot as plt
-        from matplotlib.ticker import MaxNLocator
-        
         plt.figure(figsize=(15, 10))
         
         # 成功率趋势图
@@ -400,6 +380,7 @@ class AEL_TSP:
         else:
             plt.show()
         plt.close()
+
     def evaluate_algorithm(self, code):
         # 保存算法到临时文件（使用绝对路径）
         temp_dir = "D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL"
@@ -608,6 +589,7 @@ class AEL_TSP:
     
         # 返回最优个体（原有代码）
         best_individual = max(population, key=lambda x: x['fitness'])
+        self.visualize_success_rate(save_path="D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\picture")
         logging.info("进化完成！")
         return best_individual
 
@@ -618,4 +600,3 @@ if __name__ == "__main__":
     
     ael = AEL_TSP(model_path, data_path)
     best_algorithm = ael.evolve()
-    ael.visualize_success_rate(save_path=data_path)
