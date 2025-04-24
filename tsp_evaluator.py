@@ -4,22 +4,11 @@ import random
 import json
 from collections import defaultdict
 
-sys.path.append(r"D:\Paper\Algorithm Evolution Using Large Language Model\code\AEL")
-# from temp_algorithm_ import select_next_node
-def select_next_node(current_node, destination_node, unvisited_nodes, distance_matrix):
-    import random
-    if random.random() < 0.1 and len(unvisited_nodes) > 1:
-        return random.choice(unvisited_nodes)
-    min_dist = float('inf')
-    nearest = unvisited_nodes[0]
-    for node in unvisited_nodes:
-        if distance_matrix[current_node][node] < min_dist:
-            min_dist = distance_matrix[current_node][node]
-            nearest = node
-    return nearest
+sys.path.append(r"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL")
+from temp_algorithm_ import select_next_node
 
 def read_tsp_data(file_path):
-    """解析TSPLIB格式数据，返回坐标列表 [[6]]"""
+    """解析TSPLIB格式数据,返回坐标列表"""
     cities = []
     with open(file_path, 'r') as f:
         for line in f:
@@ -33,7 +22,7 @@ def read_tsp_data(file_path):
     return cities
 
 def calculate_distance_matrix(cities):
-    """构建欧氏距离矩阵 [[4]]"""
+    """构建欧氏距离矩阵"""
     n = len(cities)
     return [
         [math.hypot(c1[0]-c2[0], c1[1]-c2[1]) for c2 in cities] 
@@ -41,7 +30,7 @@ def calculate_distance_matrix(cities):
     ]
 
 def is_feasible(path, num_cities):
-    """验证TSP路径可行性 [[6]][[8]]"""
+    """验证TSP路径可行性"""
     if len(path) != num_cities + 1:
         return False
     if path[0] != path[-1]:
@@ -57,11 +46,11 @@ def solve_tsp():
     distance_matrix = calculate_distance_matrix(cities)
     n = len(cities)
     
-    # 修正1：确保起点和终点一致
+    # 确保起点和终点一致
     current_node = random.randint(0, n-1)
     destination_node = current_node  # 终点设为起点
     
-    # 修正2：正确初始化未访问节点
+    # 初始化未访问节点
     unvisited_nodes = [i for i in range(n) if i != current_node]
     random.shuffle(unvisited_nodes)
     
