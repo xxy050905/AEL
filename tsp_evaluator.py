@@ -2,7 +2,7 @@ import sys
 import math
 import random
 import json
-from collections import defaultdict
+# from collections import defaultdict
 
 sys.path.append(r"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL")
 from temp_algorithm_ import select_next_node

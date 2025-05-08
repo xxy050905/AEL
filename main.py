@@ -14,6 +14,13 @@ from datetime import datetime
 import traceback
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
+import matplotlib.pyplot as plt
+from tempfile import NamedTemporaryFile
+import time
+from collections import defaultdict
+import hashlib
+from tempfile import NamedTemporaryFile
+
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 logging.basicConfig(level=logging.INFO)
@@ -36,7 +43,7 @@ class AEL_TSP:
         self.crossover_num = 5
         self.crossover_prob = 1.0
         self.mutation_prob = 0.2
-        self.parents_num = 2
+        self.parents_num = 10
         
          # 文件路径设置
         self.data_path = data_path
@@ -45,13 +52,18 @@ class AEL_TSP:
         self.eval_instances, self.optimal_solutions = self.load_evaluation_data()
         #成功率统计
         self.success_stats = {
-            'initialization': {'success': 0, 'fail': 0},
-            'crossover': {'success': 0, 'fail': 0},
-            'mutation': {'success': 0, 'fail': 0},
-            'total_attempts': 0,
-            'generation_stats': []
+        'initialization': {'success': 0, 'fail': 0},
+        'crossover': {'success': 0, 'fail': 0},
+        'mutation': {'success': 0, 'fail': 0},
+        'total_attempts': 0,
+        'generation_stats': [],
+        'error_types': {
+            'parse_error': 0,
+            'invalid_code': 0,
+            'runtime_error': 0,
+            'other_errors': 0
         }
-
+    }
     def get_next_algorithm_number(self):
         """获取下一个算法ID（基于JSON文件）"""
         json_file = r"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data\\algorithms.json"
@@ -94,7 +106,7 @@ class AEL_TSP:
         return new_algorithm['id']
     
     def load_algorithm(self, algorithm_id):
-        """从JSON文件加载指定ID的算法"""
+        """加载指定ID的算法"""
         json_file = os.path.join(self.data_path, "algorithms.json")
         
         try:
@@ -249,7 +261,7 @@ class AEL_TSP:
                 raise ValueError("未找到<start>…<end>描述")
             description = m_desc.group(1).strip()
 
-            # 4) 提取函数块（行+缩进算法）&#8203;:contentReference[oaicite:2]{index=2}
+            # 4) 提取函数块（行+缩进算法）
             raw_block = extract_function_block(response, "select_next_node")
             if not raw_block.strip():
                 raise ValueError("函数定义匹配失败")
@@ -278,9 +290,10 @@ class AEL_TSP:
             return description, standardized_code
 
         except Exception as e:
-            # 可选：写日志
+            # 写日志
             log = {"time": datetime.now().isoformat(), "error": str(e)}
-            with open("parse_errors.log","a") as f: 
+            self.success_stats['error_types']['parse_error'] += 1
+            with open("D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\log\\parse_llm_response_error.log","a") as f: 
                 f.write(json.dumps(log)+"\n")
             print(f"解析错误: {e}")
             return None, None
@@ -374,7 +387,7 @@ class AEL_TSP:
         plt.grid(True)
 
         # 操作类型分布
-        plt.subplot(2,2, 2)
+        plt.subplot(2 ,2, 2)
         labels = ['Initialization', 'Crossover', 'Mutation']
         success = [
             self.success_stats["initialization"]["success"],
@@ -396,11 +409,24 @@ class AEL_TSP:
         plt.legend()
         plt.gca().yaxis.set_major_locator(MaxNLocator(integer=True))
 
-        # 错误类型分布
+      # 错误类型分布
         plt.subplot(2, 2, 3)
-        error_types = {k:v for k,v in self.success_stats.items() if k in ['missing_description', 'invalid_code', 'other_errors']}
-        plt.pie(error_types.values(), labels=error_types.keys(), autopct='%1.1f%%')
-        plt.title('Error Type Distribution')
+        error_types = self.success_stats['error_types']
+        labels = list(error_types.keys())
+        sizes = list(error_types.values())
+        
+        # 过滤掉0值的错误类型
+        filtered_labels = [label for label, size in zip(labels, sizes) if size > 0]
+        filtered_sizes = [size for size in sizes if size > 0]
+        
+        if filtered_sizes:
+            plt.pie(filtered_sizes, labels=filtered_labels, autopct='%1.1f%%')
+            plt.title('Error Type Distribution')
+        else:
+            plt.text(0.5, 0.5, 'No Errors Recorded', 
+                    ha='center', va='center')
+            plt.title('Error Type Distribution')
+
 
         # 总体统计
         plt.subplot(2, 2, 4)
@@ -424,24 +450,28 @@ class AEL_TSP:
         temp_dir = "D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL"
         temp_file = f"temp_algorithm_.py"
         temp_path = os.path.join(temp_dir, temp_file)
-    
+        valid_result = False
+
         try:
             # 确保目录存在
             os.makedirs(temp_dir, exist_ok=True)
-        
+            
             # 写入代码文件
             with open(temp_path, "w", encoding="utf-8") as f:
+                f.write("import numpy as np\n")  # 确保numpy可用
                 f.write(code + "\n\n")
                 logging.info(f"成功写入临时文件：{temp_path}")
-        
+
+            # 验证所有评估实例
+            valid_count = 0
             for instance, optimal in zip(self.eval_instances, self.optimal_solutions):
                 # 验证实例文件存在
                 if not os.path.exists(instance):
                     logging.error(f"实例文件不存在：{instance}")
                     continue
-                
-                # 运行评估（传递正确的参数顺序）
+                    
                 try:
+                    # 运行评估
                     process = subprocess.run(
                         ["python", "tsp_evaluator.py", temp_path, instance],
                         capture_output=True,
@@ -450,39 +480,176 @@ class AEL_TSP:
                         check=True,
                         env={**os.environ, "PYTHONPATH": r"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL"}
                     )
-                    # 解析结果
-                    file_path = r"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data\\tsp_result.json"
+                    
+                    # 解析结果文件
+                    result_file = r"D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data\\tsp_result.json"
+                    if os.path.exists(result_file):
+                        with open(result_file, 'r', encoding='utf-8') as f:
+                            result = json.load(f)
+                            if result.get("status") == 1:  # 有效解
+                                valid_count += 1
+                            else:  # 无效解
+                                self.success_stats['error_types']['invalid_code'] += 1
+                    else:  # 结果文件未生成
+                        self.success_stats['error_types']['runtime_error'] += 1
+                        logging.error(f"结果文件未生成: {instance}")
 
-                    try:
-                        with open(file_path, 'r', encoding='utf-8') as f:
-                            result = json.load(f)  # 正确使用文件对象
-                            if result["status"]:
-                                return result["status"]
-                            else:
-                                logging.info("The algorithm is not feasible")
-                                return result["status"]
-                        
-                    except (subprocess.CalledProcessError, json.JSONDecodeError) as e:
-                        error_info = {
-                        "error_type": type(e).__name__,
-                        "error_msg": str(e),
-                        "instance": instance,
-                        "temp_file": temp_path,
-                        "stdout": process.stdout if 'process' in locals() else '',
-                        "stderr": process.stderr if 'process' in locals() else ''
-                        }
-                        logging.error(json.dumps(error_info, indent=2))
                 except subprocess.CalledProcessError as e:
-                    logging.info("evaluate algorithm failed")
-                    print(f"子进程错误详情：\n{e.stderr}")  # 输出具体错误信息
-                    return 0
+                    # 子进程返回非零状态码
+                    self.success_stats['error_types']['invalid_code'] += 1
+                    error_info = {
+                        "type": "INVALID_CODE",
+                        "instance": os.path.basename(instance),
+                        "exit_code": e.returncode,
+                        "stderr": e.stderr[:200]  # 截取前200字符
+                    }
+                    logging.error(json.dumps(error_info))
+                    
+                except subprocess.TimeoutExpired:
+                    self.success_stats['error_types']['runtime_error'] += 1
+                    logging.error(f"评估超时: {instance}")
+
+            # 计算成功率
+            success_rate = valid_count / len(self.eval_instances) if self.eval_instances else 0
+            return success_rate
+
+        except json.JSONDecodeError as e:
+            self.success_stats['error_types']['runtime_error'] += 1
+            logging.error(f"JSON解析失败: {str(e)}")
+            return 0
+            
+        except Exception as e:
+            self.success_stats['error_types']['other_errors'] += 1
+            error_info = {
+                "type": "UNEXPECTED_ERROR",
+                "error": str(e),
+                "traceback": traceback.format_exc()
+            }
+            logging.error(json.dumps(error_info, indent=2))
+            return 0
+            
         finally:
             # 清理临时文件
             try:
-                os.remove(temp_path)
-                logging.info(f"已清理临时文件：{temp_path}")
+                if os.path.exists(temp_path):
+                    os.remove(temp_path)
+                    logging.info(f"已清理临时文件：{temp_path}")
             except Exception as e:
+                self.success_stats['error_types']['other_errors'] += 1
                 logging.warning(f"临时文件清理失败：{str(e)}")
+            
+            # 最终有效性检查
+            if not valid_result:
+                self.success_stats['error_types']['invalid_code'] += 1
+
+    # def Multiple_test(self, data_path):
+    #     """多数据集测试并返回最优算法"""
+    #     # 1. 加载待测试算法
+    #     algorithms = []
+    #     json_file = os.path.join(data_path, "algorithms.json")
+    #     try:
+    #         with open(json_file, "r", encoding="utf-8") as f:
+    #             algorithms = json.load(f)
+    #     except Exception as e:
+    #         logging.error(f"加载算法失败: {str(e)}")
+    #         return None
+
+    #     # 2. 获取所有TSP文件
+    #     tsp_files = []
+    #     for root, dirs, files in os.walk(data_path):
+    #         for file in files:
+    #             if file.lower().endswith('.tsp'):
+    #                 tsp_files.append(os.path.join(root, file))
+    #     if not tsp_files:
+    #         logging.error("未找到任何TSP数据集文件")
+    #         return None
+
+    #     # 3. 准备临时目录
+    #     temp_dir = os.path.join(data_path, "temp_algorithms_")
+    #     os.makedirs(temp_dir, exist_ok=True)
+    #     results = defaultdict(lambda: defaultdict(list))
+
+    #     # 4. 评估每个算法
+    #     for alg in algorithms:
+    #         alg_id = alg["id"]
+    #         code = alg.get("code", "")
+            
+    #         # 生成唯一文件名
+    #         file_hash = hashlib.md5(code.encode()).hexdigest()[:8]
+    #         temp_filename = f"algorithm_{alg_id}_{file_hash}.py"
+    #         temp_path = os.path.join(temp_dir, temp_filename)
+            
+    #         try:
+    #             # 写入算法文件
+    #             with open(temp_path, "w", encoding="utf-8") as f:
+    #                 f.write("import numpy as np\n")
+    #                 f.write(code)
+                
+    #             # 评估每个数据集
+    #             for tsp_file in tsp_files:
+    #                 output_file = os.path.join(temp_dir, f"result_{alg_id}_{os.path.basename(tsp_file)}.json")
+                    
+    #                 try:
+    #                     # 运行评估程序
+    #                     process = subprocess.run(
+    #                         ['python', 'tsp_evaluator.py', temp_path, tsp_file, '--output', output_file],
+    #                         stdout=subprocess.PIPE,
+    #                         stderr=subprocess.STDOUT,
+    #                         timeout=120,
+    #                         check=True
+    #                     )
+                        
+    #                     # 解析结果
+    #                     if os.path.exists(output_file):
+    #                         with open(output_file, 'r') as f:
+    #                             result = json.load(f)
+    #                             if result['status']:
+    #                                 results[alg_id]['distances'].append(result['total_distance'])
+    #                 except subprocess.TimeoutExpired:
+    #                     logging.warning(f"评估超时: 算法 {alg_id} - {tsp_file}")
+    #                 except Exception as e:
+    #                     logging.error(f"评估失败: {str(e)}")
+            
+    #         finally:
+    #             # 清理临时文件
+    #             if os.path.exists(temp_path):
+    #                 try:
+    #                     os.remove(temp_path)
+    #                 except:
+    #                     pass
+
+    #     # 5. 计算综合评分
+    #     scores = {}
+    #     for alg_id, data in results.items():
+    #         if data['distances']:
+    #             scores[alg_id] = np.mean(data['distances'])
+        
+    #     if not scores:
+    #         logging.error("没有有效的评估结果")
+    #         return None
+
+    #     # 6. 选择最优算法
+    #     best_alg_id = min(scores, key=scores.get)
+    #     best_alg = next(alg for alg in algorithms if alg["id"] == best_alg_id)
+        
+    #     # 7. 保存结果
+    #     best_info = {
+    #         "id": best_alg_id,
+    #         "description": best_alg.get("description", ""),
+    #         "average_distance": scores[best_alg_id],
+    #         "sample_result": {
+    #             "status": True,
+    #             "total_distance": scores[best_alg_id],
+    #             "path_length": len(best_alg.get("code", "").splitlines())
+    #         }                      
+    #     }
+        
+    #     result_file = os.path.join(data_path, "tsp_result.json")
+    #     with open(result_file, "w", encoding="utf-8") as f:
+    #         json.dump(best_info['sample_result'], f, indent=2)
+        
+    #     return best_info
+
 
     def evolve(self):
         # 初始化种群
@@ -511,6 +678,7 @@ class AEL_TSP:
                             prompt=prompt,
                             max_tokens=2048,
                             temperature=0.1,
+                            frequency_penalty=0.5
                         )['choices'][0]['text']
 
                         # 解析响应
@@ -563,13 +731,14 @@ class AEL_TSP:
                                 prompt=prompt,
                                 max_tokens=2048,
                                 temperature=0.1,
+                                frequency_penalty=0.8
                             )['choices'][0]['text']
-                            print(response)
+                            # print(response)
                             # 解析响应
                             desc, code = self.parse_llm_response(response)
-                            print("变异后结果:\n")
-                            print(desc,'\n')
-                            print(code,'\n')
+                            # print("变异后结果:\n")
+                            # print(desc,'\n')
+                            # print(code,'\n')
                             # 变异操作统计
                             if desc and code:
                                 # 评估适应度
@@ -623,14 +792,11 @@ class AEL_TSP:
             logging.info(f"第 {gen+1} 代统计 - 尝试次数: {gen_attempts} | 成功率: {success_rate:.1f}%")
     
         # 进化完成后自动生成可视化
-        logging.info("正在生成成功率分析图表...")
-        self.visualize_success_rate(save_path=self.data_path)
-    
-        # 返回最优个体
-        best_individual = min(population, key=lambda x: x['fitness'])
+        logging.info("正在生成成功率分析图表...")    
         self.visualize_success_rate(save_path="D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\picture")
         logging.info("进化完成！")
-        return best_individual
+        
+
 
 # 使用示例
 if __name__ == "__main__":
@@ -638,5 +804,4 @@ if __name__ == "__main__":
     data_path = "D:\\Paper\\Algorithm Evolution Using Large Language Model\\code\\AEL\\data"
     
     ael = AEL_TSP(model_path, data_path)
-    best_algorithm = ael.evolve()
-    print(best_algorithm)
+    ael.evolve()
